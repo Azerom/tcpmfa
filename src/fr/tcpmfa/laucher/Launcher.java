@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import fr.tcpmfa.Main;
+
 public class Launcher extends JFrame{
 	
 
@@ -29,6 +31,7 @@ public class Launcher extends JFrame{
 
 			public void actionPerformed(ActionEvent arg0) {        
 				System.out.println("Lanchement ! Achtung !");
+				Main.launch();
 				setVisible(false);
 				dispose(); 
 			}  
@@ -42,6 +45,9 @@ public class Launcher extends JFrame{
 				System.out.println("Chargement de partie");
 				int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Save ID :", JOptionPane.QUESTION_MESSAGE));
 				System.out.println("Loading save n°" + id);
+				Main.lauch(id);
+				setVisible(false);
+				dispose(); 
 			}
 		});
 		

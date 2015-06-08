@@ -9,5 +9,13 @@ public class Main {
 		
 		new Launcher(null);
 	}
+	
+	public static void launch(){
+		
+	}
+	
+	public static void lauch(int idSave){
+		
+	}
 
 }
