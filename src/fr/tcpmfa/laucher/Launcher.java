@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 
 public class Launcher extends JFrame{
 	
+
+	private static final long serialVersionUID = -6523131672888748263L;
 	private JPanel ButtonPanel;
 	
 	public Launcher(Frame parent){
