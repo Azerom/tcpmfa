@@ -32,7 +32,12 @@ public class DBTDConnexion {
 	}
 
 	public void close(){
-		
+		try {
+			this.connection.close();
+			this.statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 
