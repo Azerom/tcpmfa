@@ -6,6 +6,8 @@ public class Game {
 	//private time
 	private int ressource;
 //	private display
+	private WaveEnnemy actualWave;
+	private Map map;
 	
 	public Game(){
 		

@@ -8,4 +8,6 @@ public class Map {
 	private Coordinate coordStart;
 	private Coordinate coordEnd;
 	private ArrayList<Point> points;
+	
+	private ArrayList<Tower> towers;
 }
