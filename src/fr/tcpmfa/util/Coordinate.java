@@ -46,10 +46,10 @@ public class Coordinate {
 		 		x += 1;
 		 		break;
 		 	case SOUTH :
-		 		x -= 1;
+		 		y -= 1;
 		 		break;
 		 	case WEST :
-		 		y -= 1;
+		 		x -= 1;
 		 		break;
 		}
 	}

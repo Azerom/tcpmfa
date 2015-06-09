@@ -11,7 +11,6 @@ public class WaveEnnemy extends ArrayList<Ennemy> {
 	
 	public WaveEnnemy(Game game){
 		count++;
-
 	}
 	
 	public int getCount(){
