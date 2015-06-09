@@ -13,10 +13,13 @@ public class Map {
 	
 	private ArrayList<Tower> towers;
 	
-	public Map(Game game, Coordinate coordEnd, Coordinate coordStart){
+	public Map(Game game, Coordinate coordEnd, Coordinate coordStart, ArrayList<Point> points){
 		this.game = game;
 		this.coordEnd = coordEnd;
 		this.coordStart = coordStart;
+	}
+	public Map(Coordinate coordEnd, Coordinate coordStart, ArrayList<Point> points){
+		this(null, coordEnd, coordStart, points);
 	}
 	
 	public Coordinate getCoordStart() {
