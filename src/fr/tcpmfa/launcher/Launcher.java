@@ -28,7 +28,6 @@ public class Launcher extends JDialog {
 			this.setSize(800, 500);
 			this.setLocationRelativeTo(null);
 			this.setResizable(false);
-			setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			
 			this.initComponant();
 			
