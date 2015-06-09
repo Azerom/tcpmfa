@@ -1,4 +1,4 @@
-package fr.tcpmfa.laucher;
+package fr.tcpmfa.launcher;
 
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -45,7 +45,7 @@ public class Launcher extends JFrame{
 				System.out.println("Chargement de partie");
 				int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Save ID :", JOptionPane.QUESTION_MESSAGE));
 				System.out.println("Loading save n°" + id);
-				Main.lauch(id);
+				Main.launch(id);
 				setVisible(false);
 				dispose(); 
 			}

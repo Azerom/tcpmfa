@@ -1,6 +1,6 @@
 package fr.tcpmfa;
 
-import fr.tcpmfa.laucher.Launcher;
+import fr.tcpmfa.launcher.Launcher;
 
 public class Main {
 
@@ -14,7 +14,7 @@ public class Main {
 		
 	}
 	
-	public static void lauch(int idSave){
+	public static void launch(int idSave){
 		
 	}
 
