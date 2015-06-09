@@ -39,7 +39,7 @@ public class Game {
 	public Game(int hp, int ressource){
 		this.hp = hp;
 		this.ressource = ressource;
-
+		this.display = new Display();
 		this.map = new Map(this, new Coordinate(0, 20), new Coordinate(0,0), null);
 		actualWave = new WaveEnnemy(this);
 		Ennemy ennemy = new Ennemy(3, null, 15, 20, new CheckPoint(Direction.NORTH, new Point(0,10)), 5, null, "Test Guy", new Coordinate(0,0), this);
