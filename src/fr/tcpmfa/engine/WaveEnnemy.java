@@ -3,8 +3,6 @@ package fr.tcpmfa.engine;
 import java.sql.Time;
 import java.util.ArrayList;
 
-import fr.tcpmfa.util.*;
-
 public class WaveEnnemy extends ArrayList<Ennemy> {
 
 	private static final long serialVersionUID = 3391625254887809314L;
