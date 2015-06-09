@@ -28,7 +28,7 @@ public class Main {
 	}
 	
 	public static void launch(int idSave){
-		
+		System.out.println(idSave);
 	}
 
 }

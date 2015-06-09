@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import fr.tcpmfa.Main;
+
 
 
 public class Launcher extends JDialog {
@@ -63,10 +65,9 @@ public class Launcher extends JDialog {
 		  	JTextField pseudo = new JTextField();
 		    pseudo.setPreferredSize(new Dimension(100, 25));
 		    JLabel pseudoLabel = new JLabel("Pseudo :");
-		    
 		    panSetPseudo.add(pseudoLabel);
 		    panSetPseudo.add(pseudo);
-		  	
+		  	//
 		  	panSet.add(panSetPseudo);
 		  	
 		  	
@@ -82,6 +83,7 @@ public class Launcher extends JDialog {
 		  newGameButton.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
 				  System.out.println("Nouvelle Partie Commencée");
+				  Main.launch();
 			  }
 		  });
 		  
@@ -89,8 +91,9 @@ public class Launcher extends JDialog {
 		  loadGameButton.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
 				  System.out.println("Chargement de la partie");
-				  int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez entrer le numéro de votre sauvegarde :", "Chargement de la partie", JOptionPane.QUESTION_MESSAGE));
-				  System.out.println(id);
+				  int idSave = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez entrer le numéro de votre sauvegarde :", "Chargement de la partie", JOptionPane.QUESTION_MESSAGE));
+				  System.out.println(idSave);
+				  Main.launch(idSave);
 			  }
 		  });
 		  
