@@ -52,7 +52,7 @@ public class DBTDConnexion {
 		ResultSet info = null;
 		Coordinate startPoint;
 		Coordinate endPoint;
-		ArrayList<Point> point ;
+		ArrayList<Point> liste ;
 		
 		
 		try {
@@ -61,7 +61,14 @@ public class DBTDConnexion {
 			info.first();
 			startPoint=new Coordinate(info.getInt(2), info.getInt(3));
 			endPoint = new Coordinate(info.getInt(4), info.getInt(5));
+			
+			info = statement.executeQuery("SELECT * FROM point WHERE N_Map="+ID_Map);
 
+			liste=new ArrayList<Point> ();
+			while(info.next()){
+				Point point = new Point(info.getInt(2), info.getInt(3));
+				liste.add(point);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
