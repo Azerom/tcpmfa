@@ -8,9 +8,14 @@ public class Game {
 //	private display
 	private WaveEnnemy actualWave;
 	private Map map;
+	private static int turn;
 	
-	public Game(){
+	public Game(int hp, int ressource, Map map){
+		this.hp = hp;
+		this.ressource = ressource;
+		this.map = map;
 		
+		actualWave = new WaveEnnemy();
 	}
 
 	public int getHp() {
@@ -35,6 +40,10 @@ public class Game {
 	
 	public Map getMap(){
 		return map;
+	}
+	
+	public WaveEnnemy getActualWave(){
+		return this.actualWave;
 	}
 }
 

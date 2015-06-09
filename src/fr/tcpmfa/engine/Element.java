@@ -8,6 +8,7 @@ public abstract class Element {
 	protected Type typeDamage;
 	protected String name;
 	protected final Game game;
+	protected int wait;
 	
 	public Element(Coordinate coord, int nmdDamage, Type typeDamage, String name, Game game){
 		this.coord = coord;
@@ -15,6 +16,7 @@ public abstract class Element {
 		this.typeDamage = typeDamage;
 		this.name = name;
 		this.game = game;
+		this.wait = 0;
 	}
 	public abstract void act();
 	

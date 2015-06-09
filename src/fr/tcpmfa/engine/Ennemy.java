@@ -27,17 +27,21 @@ public class Ennemy extends Element {
 	}
 	
 	public void die(){
-		
+		game.getActualWave().remove(this);
 	}
 
 	@Override
 	public void act() {
-		move();
-		
-		if (game.getMap().getCoordEnd().isEqual(this.getCoord())){
-			game.decreaseHp(getNmbDamage());
-			this.die();
+		if(this.wait == this.moveSpeed){
+			move();
+			this.wait = 0;
+			if (game.getMap().getCoordEnd().isEqual(this.getCoord())){
+				game.decreaseHp(getNmbDamage());
+				this.die();
+			}
 		}
+		else
+			wait++;
 		
 	}
 }
