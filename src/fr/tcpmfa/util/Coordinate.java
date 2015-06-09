@@ -21,6 +21,11 @@ public class Coordinate {
 		this.y = y;
 	}
 	
+	public Coordinate(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
+	
 	/**
 	 * Permet de savoir si 2 coordinates sont egaux
 	 * @param other : autre Coordinate

@@ -5,6 +5,20 @@ import java.util.ArrayList;
 import fr.tcpmfa.util.Coordinate;
 
 public class Map {
+
+	private Coordinate coordStart;
+	private Coordinate coordEnd;
+	private ArrayList<Point> points;
+	private final Game game;
+	
+	private ArrayList<Tower> towers;
+	
+	public Map(Game game, Coordinate coordEnd, Coordinate coordStart){
+		this.game = game;
+		this.coordEnd = coordEnd;
+		this.coordStart = coordStart;
+	}
+	
 	public Coordinate getCoordStart() {
 		return coordStart;
 	}
@@ -23,17 +37,6 @@ public class Map {
 
 	public ArrayList<Tower> getTowers() {
 		return towers;
-	}
-
-	private Coordinate coordStart;
-	private Coordinate coordEnd;
-	private ArrayList<Point> points;
-	private final Game game;
-	
-	private ArrayList<Tower> towers;
-	
-	public Map(Game game){
-		this.game = game;
 	}
 	
 }

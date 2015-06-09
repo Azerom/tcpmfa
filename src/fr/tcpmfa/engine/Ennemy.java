@@ -16,12 +16,16 @@ public class Ennemy extends Element {
 		this.resitance = resistance;
 		this.loot = loot;
 		this.hp = hp;
+		this.checkPoint = checkpoint;
+		
+		System.out.println("hello, i am " + this.name);
 	}
 	
 	public void move(){
 		this.coord.moveInDirection(checkPoint.getDirection());
 		
 		if(this.coord.isEqual(checkPoint.getNextPoint())){
+			System.out.println("I reach a checkpoint");
 			this.checkPoint = checkPoint.getNextPoint().getCheckPoint();
 		}
 	}
@@ -32,6 +36,7 @@ public class Ennemy extends Element {
 
 	@Override
 	public void act() {
+
 		if(this.wait == this.moveSpeed){
 			move();
 			this.wait = 0;
@@ -42,6 +47,8 @@ public class Ennemy extends Element {
 		}
 		else
 			wait++;
+		
+		System.out.println(this.name + " = X : " + coord.getX() + ", Y : " + coord.getY());
 		
 	}
 }
