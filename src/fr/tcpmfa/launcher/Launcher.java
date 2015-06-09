@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -43,8 +44,10 @@ public class Launcher extends JDialog {
 		  panWel.setBorder(BorderFactory.createTitledBorder("Bienvenue"));
 		  
 		  JLabel welcMessage = new JLabel("Bonjour et bienvenue sur TCPMFA, veuillez parametrer votre jeu et commencer la partie ou charger une partie.");
+		  JLabel icon = new JLabel(new ImageIcon("Images/TowerIcon.png"));
 		  
 		  panWel.add(welcMessage);
+		  panWel.add(icon);
 		  //
 		  
 		  
