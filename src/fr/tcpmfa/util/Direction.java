@@ -1,4 +1,4 @@
-package fr.tcpmfa.engine;
+package fr.tcpmfa.util;
 
 public enum Direction {
 	NORTH,

@@ -20,6 +20,10 @@ public class Game {
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
+	
+	public void decreaseHp(int damage){
+		this.hp -= damage;
+	}
 
 	public int getRessource() {
 		return ressource;
@@ -27,6 +31,10 @@ public class Game {
 
 	public void setRessource(int ressource) {
 		this.ressource = ressource;
+	}
+	
+	public Map getMap(){
+		return map;
 	}
 }
 

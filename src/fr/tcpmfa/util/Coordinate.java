@@ -31,4 +31,21 @@ public class Coordinate {
 			return true;
 		return false;
 	}
+	
+	public void moveInDirection(Direction direction){
+		switch(direction){
+		 	case NORTH :
+		 		y += 1;
+		 		break;
+		 	case EAST :
+		 		x += 1;
+		 		break;
+		 	case SOUTH :
+		 		x -= 1;
+		 		break;
+		 	case WEST :
+		 		y -= 1;
+		 		break;
+		}
+	}
 }
