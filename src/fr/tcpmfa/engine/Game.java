@@ -1,5 +1,7 @@
 package fr.tcpmfa.engine;
 
+import fr.tcpmfa.util.Coordinate;
+
 public class Game {
 
 	private int hp;
@@ -15,7 +17,19 @@ public class Game {
 		this.ressource = ressource;
 		this.map = map;
 		
-		actualWave = new WaveEnnemy();
+		actualWave = new WaveEnnemy(this);
+	}
+	public Game(int hp, int ressource){
+		this.hp = hp;
+		this.ressource = ressource;
+		this.map = new Map(this, new Coordinate(0, 20), new Coordinate(0,0));
+		actualWave = new WaveEnnemy(this);
+	}
+	
+	public void turn(){
+		for(Ennemy e : actualWave){
+			e.act();
+		}
 	}
 
 	public int getHp() {

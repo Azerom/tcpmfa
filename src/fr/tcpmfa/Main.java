@@ -1,17 +1,23 @@
 package fr.tcpmfa;
 
-import fr.tcpmfa.launcher.Launcher;
+import fr.tcpmfa.engine.Game;
 
 public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Hello world !");
 		
-		new Launcher(null);
+//		new Launcher(null);
+		
+		Game game = new Game(15, 20);
+		
+		for(int i = 0; i < 10; i++){
+			game.turn();
+		}
 	}
 	
 	public static void launch(){
-		
+
 	}
 	
 	public static void launch(int idSave){
