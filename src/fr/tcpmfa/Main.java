@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Hello world !");
 		
-//		new Launcher(null, "", true);
+		new Launcher(null, "Launcher", true);
 		//Test code : remove ASAP !
 		//------------------------
 		Game game = new Game(15, 20);
