@@ -1,4 +1,4 @@
-package fr.tcpmfa.laucher;
+package fr.tcpmfa.launcher;
 
 import javax.swing.JPanel;
 
