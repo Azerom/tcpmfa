@@ -35,14 +35,5 @@ public class DBTDConnexion {
 		
 	}
 
-	/*public Map getMap(int){
-
-	}
-
-	public Save getSave(int){
-
-	}
-
-	public */
 
 }
