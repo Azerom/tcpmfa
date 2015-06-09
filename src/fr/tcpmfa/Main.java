@@ -10,14 +10,14 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Hello world !");
 		
-		new Launcher(null, "", true);
+//		new Launcher(null, "", true);
 		//Test code : remove ASAP !
 		//------------------------
 		Game game = new Game(15, 20);
 
 		DBTDConnexion bdd = new DBTDConnexion();
 		
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < 100; i++){
 			game.turn();
 			
 		}
