@@ -2,14 +2,46 @@ package fr.tcpmfa.engine;
 
 import fr.tcpmfa.util.Coordinate;
 
+/**
+ * Ennemy
+ * 
+ * desing to move along a path made of Points
+ * @see Points
+ * @see Element
+ * @author Azerom
+ *
+ */
 public class Ennemy extends Element {
+	
+	/**
+	 * Move speed, the fewer the better
+	 */
 	private int moveSpeed;
 	private final Type resitance;
 	private final int loot;
 	private int hp;
 	
+	/**
+	 * Actual chackpoint using by the ennemy to navigate
+	 * @see CheckPoint
+	 */
 	private CheckPoint checkPoint;
 	
+	/**
+	 * Default contructor</br>
+	 * 
+	 * Have to many parameter for an actual use, prefer use the BDD component to collect the data
+	 * @param moveSpeed
+	 * @param resistance
+	 * @param loot
+	 * @param hp
+	 * @param checkpoint
+	 * @param nmdDamage
+	 * @param typeDamage
+	 * @param name
+	 * @param coord
+	 * @param game
+	 */
 	public Ennemy(int moveSpeed, Type resistance, int loot, int hp, CheckPoint checkpoint, int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game){
 		super(coord, nmdDamage, typeDamage, name, game);
 		this.moveSpeed = moveSpeed;
@@ -21,6 +53,9 @@ public class Ennemy extends Element {
 		System.out.println("hello, i am " + this.name);
 	}
 	
+	/**
+	 * Make the ennemy move on is path.
+	 */
 	public void move(){
 		this.coord.moveInDirection(checkPoint.getDirection());
 		
@@ -30,6 +65,9 @@ public class Ennemy extends Element {
 		}
 	}
 	
+	/**
+	 * Make the ennemie die
+	 */
 	public void die(){
 		game.getActualWave().remove(this);
 	}

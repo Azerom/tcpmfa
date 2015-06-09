@@ -4,6 +4,11 @@ import fr.tcpmfa.consoleGraphic.Display;
 import fr.tcpmfa.util.Coordinate;
 import fr.tcpmfa.util.Direction;
 
+/**
+ * Represent a game of tower defense, contain all information like hp or ressources
+ * @author Azerom
+ *
+ */
 public class Game {
 
 	private int hp;
@@ -14,6 +19,14 @@ public class Game {
 	private Map map;
 	private static int turn;
 	
+	/**
+	 * Default constructeur</br>
+	 * </br>
+	 * 
+	 * @param hp : health point
+	 * @param ressource : ressource you can use in tower upgrade
+	 * @param map : Map link to the Game
+	 */
 	public Game(int hp, int ressource, Map map){
 		this.hp = hp;
 		this.ressource = ressource;
@@ -21,11 +34,13 @@ public class Game {
 		this.display = new Display();
 		actualWave = new WaveEnnemy(this);
 	}
+	
+	//Test code around here, remove ASAP
 	public Game(int hp, int ressource){
 		this.hp = hp;
 		this.ressource = ressource;
-		this.map = new Map(this, new Coordinate(0, 20), new Coordinate(0,0));
-		this.display = new Display();
+
+		this.map = new Map(this, new Coordinate(0, 20), new Coordinate(0,0), null);
 		actualWave = new WaveEnnemy(this);
 		Ennemy ennemy = new Ennemy(3, null, 15, 20, new CheckPoint(Direction.NORTH, new Point(0,10)), 5, null, "Test Guy", new Coordinate(0,0), this);
 		actualWave.add(ennemy);
