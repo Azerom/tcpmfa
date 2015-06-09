@@ -1,102 +1,118 @@
 package fr.tcpmfa.launcher;
 
-import java.awt.Frame;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import fr.tcpmfa.Main;
 
-public class Launcher extends JFrame{
-	
 
-	private static final long serialVersionUID = -6523131672888748263L;
-	private JPanel ButtonPanel;
-	
-	public Launcher(Frame parent){
-		super("TCPMFA Launcher");
 
-		this.setSize(500, 170);
-		this.setLocationRelativeTo(null);
-		this.setResizable(false);
-		
-		
-		JButton launchBouton = new JButton("Launch");
+public class Launcher extends JDialog {
 
-		launchBouton.addActionListener(new ActionListener(){
+	private static final long serialVersionUID = 1L;
 
-			public void actionPerformed(ActionEvent arg0) {        
-				System.out.println("Lanchement ! Achtung !");
-				Main.launch();
-				setVisible(false);
-				dispose(); 
-			}  
+	  public Launcher(JFrame parent, String title, boolean modal){
 
-		});
-		
-		
-		JButton loadButton = new JButton("Load");
-		loadButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("Chargement de partie");
-				int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Save ID :", JOptionPane.QUESTION_MESSAGE));
-				System.out.println("Loading save n°" + id);
-				Main.launch(id);
-				setVisible(false);
-				dispose(); 
-			}
-		});
-		
-		
-		ButtonPanel = new JPanel();
-		
-		
-		ButtonPanel.add(launchBouton);
-		ButtonPanel.add(loadButton);
-		
-		this.add(ButtonPanel);
-		
-		
-		this.setVisible(true);
-	}
-	
-//	public void launchSaveAskDialog(){
-//		new SaveAskDialog(this);
-//	}
-	
-//	class SaveAskDialog extends JDialog implements ActionListener {
-//		  public SaveAskDialog(JFrame parent) {
-//		    super(parent, "Save Loading", true);
-//		    this.setLocationRelativeTo(null);
-//		    JPanel questionPanel = new JPanel();
-//		    
-//		    JFormattedTextField textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
-//		    textField.setPreferredSize(new Dimension(100, 25));
-//		    questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.LINE_AXIS));
-//		    questionPanel.add(new JLabel("Save ID :"));
-//		    questionPanel.add(textField);
-//		    
-//		    getContentPane().add(questionPanel);
-//		    JPanel buttonPanel = new JPanel();
-//		    
-//		    JButton button = new JButton("Launch"); 
-//		    buttonPanel.add(button); 
-//		    button.addActionListener(this);
-//		    getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-//		    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-//		    pack(); 
-//		    setVisible(true);
-//		  }
-//		  public void actionPerformed(ActionEvent e) {
-//			this.getParent().setVisible(false);
-//			  
-//		    setVisible(false); 
-//		    dispose(); 
-//		  }
-//		}
-
+			//On appelle le constructer de JDialog correspondant, on lui spécifie une taille, la position, la boite n'est pas redimensionnable, on affiche ensuite
+			super(parent, title, modal);
+			this.setSize(800, 500);
+			this.setLocationRelativeTo(null);
+			this.setResizable(false);
+			
+			this.initComponant();
+			
+			this.setVisible(true);
+	  }
+	  
+	  private void initComponant(){
+			
+		  //Welcome
+		  JPanel panWel = new JPanel();
+		  panWel.setBorder(BorderFactory.createTitledBorder("Bienvenue"));
+		  
+		  JLabel welcMessage = new JLabel("Bonjour et bienvenue sur TCPMFA, veuillez parametrer votre jeu et commencer la partie ou charger une partie.");
+		  
+		  panWel.add(welcMessage);
+		  //
+		  
+		  
+		  //Settings
+		  JPanel panSet = new JPanel();
+		  panSet.setBackground(Color.RED);
+		  panSet.setPreferredSize(new Dimension(200, 20));
+		  panSet.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+		  
+		  JButton settingTest = new JButton("BoutonTest");
+		  settingTest.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Chargement de la partie en cours...");
+				}
+			});
+		  	//Quelques presets
+		  	JPanel panSetPseudo = new JPanel();
+		  	JTextField pseudo = new JTextField();
+		    pseudo.setPreferredSize(new Dimension(100, 25));
+		    JLabel pseudoLabel = new JLabel("Pseudo :");
+		    panSetPseudo.add(pseudoLabel);
+		    panSetPseudo.add(pseudo);
+		  	//
+		  	panSet.add(panSetPseudo);
+		  	
+		  	
+		  panSet.add(settingTest);
+		  //
+		  
+		  
+		  //New-LoadGame
+		  JPanel panNLG = new JPanel();
+		  panNLG.setBorder(BorderFactory.createTitledBorder("Jeu"));
+		  
+		  JButton newGameButton = new JButton("Nouvelle Partie");
+		  newGameButton.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent arg0) {
+				  System.out.println("Nouvelle Partie Commencée");
+				  Main.launch();
+			  }
+		  });
+		  
+		  JButton loadGameButton = new JButton("Charger une partie");
+		  loadGameButton.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent arg0) {
+				  System.out.println("Chargement de la partie");
+				  int idSave = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez entrer le numéro de votre sauvegarde :", "Chargement de la partie", JOptionPane.QUESTION_MESSAGE));
+				  System.out.println(idSave);
+				  Main.launch(idSave);
+			  }
+		  });
+		  
+		  panNLG.add(newGameButton);
+		  panNLG.add(loadGameButton);
+		  //
+		  
+		  
+  
+		  //content
+		  JPanel content = new JPanel();
+		  content.setBackground(Color.YELLOW);
+		  content.add(panWel);
+		  content.add(panSet);
+		  this.add(content);
+		  
+		  this.getContentPane().add(panWel, BorderLayout.NORTH);
+		  this.getContentPane().add(panSet, BorderLayout.CENTER);
+		  this.getContentPane().add(panNLG, BorderLayout.SOUTH);
+		  //
+	  }
 }

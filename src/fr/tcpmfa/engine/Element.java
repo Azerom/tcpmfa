@@ -1,8 +1,9 @@
 package fr.tcpmfa.engine;
 
+import fr.tcpmfa.consoleGraphic.GraphicalElement;
 import fr.tcpmfa.util.Coordinate;
 
-public abstract class Element {
+public abstract class Element implements GraphicalElement{
 	protected Coordinate coord;
 	protected int nmbDamage;
 	protected Type typeDamage;
@@ -42,5 +43,12 @@ public abstract class Element {
 	}
 	public String getName() {
 		return name;
+	}
+	
+	public char getImage(){
+		return 'X';
+	}
+	public void setImage(char image){
+		
 	}
 }
