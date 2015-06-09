@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 
@@ -58,7 +59,18 @@ public class Launcher extends JDialog {
 					System.out.println("Chargement de la partie en cours...");
 				}
 			});
-			  
+		  	//Quelques presets
+		  	JPanel panSetPseudo = new JPanel();
+		  	JTextField pseudo = new JTextField();
+		    pseudo.setPreferredSize(new Dimension(100, 25));
+		    JLabel pseudoLabel = new JLabel("Pseudo :");
+		    
+		    panSetPseudo.add(pseudoLabel);
+		    panSetPseudo.add(pseudo);
+		  	
+		  	panSet.add(panSetPseudo);
+		  	
+		  	
 		  panSet.add(settingTest);
 		  //
 		  
