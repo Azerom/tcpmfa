@@ -6,6 +6,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import fr.tcpmfa.engine.Ennemy;
 import fr.tcpmfa.engine.Point;
 import fr.tcpmfa.engine.Map;
 import fr.tcpmfa.util.Coordinate;
@@ -80,14 +81,13 @@ public class DBTDConnexion {
 	 * @param ID_Ennemy
 	 * @author schouteeten
 	 */
-	public void getEnnemy(int ID_Ennemy){
+	public Ennemy getEnnemy(int ID_Ennemy){
 		ResultSet info = null;
-		final int HP;
-		final int numberDamage;
-		final int moveSpeed;
-		final int range;
-		final String resistanceType;
-		final int loot;
+		int HP = 0;
+		int numberDamage = 0;
+		int moveSpeed = 0;
+		String resistanceType;
+		int loot = 0;
 
 		try {
 			switch(ID_Ennemy){ 
@@ -96,7 +96,7 @@ public class DBTDConnexion {
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
-				range=info.getInt(5);
+				
 				resistanceType=info.getString(6);
 				loot=info.getInt(7);
 				break;
@@ -105,7 +105,7 @@ public class DBTDConnexion {
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
-				range=info.getInt(5);
+				
 				resistanceType=info.getString(6);
 				loot=info.getInt(7);
 				break;
@@ -114,7 +114,7 @@ public class DBTDConnexion {
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
-				range=info.getInt(5);
+				
 				resistanceType=info.getString(6);
 				loot=info.getInt(7);
 				break;
@@ -123,7 +123,7 @@ public class DBTDConnexion {
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
-				range=info.getInt(5);
+				
 				resistanceType=info.getString(6);
 				loot=info.getInt(7);
 				break;
@@ -132,7 +132,7 @@ public class DBTDConnexion {
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
-				range=info.getInt(5);
+				
 				resistanceType=info.getString(6);
 				loot=info.getInt(7);
 				break;
@@ -141,12 +141,11 @@ public class DBTDConnexion {
 
 			}
 
-
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return new Ennemy(moveSpeed, null, loot, HP, null, numberDamage, null, null, null, null);
 
 	}
 
