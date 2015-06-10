@@ -73,7 +73,7 @@ public class Ennemy extends Element {
 	 * Make the ennemie die
 	 */
 	public void die(){
-		game.getActualWave().remove(this);
+		game.deadTakeAct(this);
 	}
 
 	@Override
@@ -84,7 +84,9 @@ public class Ennemy extends Element {
 			this.wait = 0;
 			if (game.getMap().getCoordEnd().isEqual(this.getCoord())){
 				game.decreaseHp(getNmbDamage());
+				System.out.println(this.name + " suicide");
 				this.die();
+				return;
 			}
 		}
 		else
