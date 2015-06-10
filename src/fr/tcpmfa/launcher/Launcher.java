@@ -17,12 +17,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import fr.tcpmfa.Main;
+//PROVISOIRE DEBUG
+import fr.tcpmfa.util.Time;
 
 
 
 public class Launcher extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	
+	Time chrono = new Time();
 
 	  public Launcher(JFrame parent, String title, boolean modal){
 
@@ -52,19 +56,45 @@ public class Launcher extends JDialog {
 		  panWel.add(icon1);
 		  //
 		  
+		  //Debug ===================================================================================================================================================
+		  JPanel panDebug = new JPanel();
+		  panWel.setBorder(BorderFactory.createTitledBorder("Debug (A effacer par la suite)"));
+		  
+		  JButton startTemps = new JButton("Démarrage du temps");
+		  startTemps.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Démarrage du temps en cours ..");
+					runTimeStart();
+					
+				}
+			});
+		  JButton endTemps = new JButton("Fin du temps");
+		  endTemps.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Fin du temps en cours ..");
+					runTimeEnd();
+				}
+			});
+		  JButton affichageTemps = new JButton("Affichage du temps");
+		  affichageTemps.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Affichage du temps en cours...");
+					runTimeDisplay();
+				}
+			});
+		  	
+		  panDebug.add(startTemps);
+		  panDebug.add(endTemps);
+		  panDebug.add(affichageTemps);
+		  //==============================================================================================================================================================
+		  
 		  
 		  //Settings
 		  JPanel panSet = new JPanel();
 		  panSet.setBackground(Color.RED);
 		  panSet.setPreferredSize(new Dimension(200, 20));
 		  panSet.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-		  
-		  JButton settingTest = new JButton("BoutonTest");
-		  settingTest.addActionListener(new ActionListener(){
-			  public void actionPerformed(ActionEvent arg0) {
-					System.out.println("Chargement de la partie en cours...");
-				}
-			});
+
 		  	//Quelques presets
 		  	JPanel panSetPseudo = new JPanel();
 		  	JTextField pseudo = new JTextField();
@@ -74,9 +104,7 @@ public class Launcher extends JDialog {
 		    panSetPseudo.add(pseudo);
 		  	//
 		  	panSet.add(panSetPseudo);
-		  	
-		  	
-		  panSet.add(settingTest);
+
 		  //
 		  
 		  
@@ -118,6 +146,23 @@ public class Launcher extends JDialog {
 		  this.getContentPane().add(panWel, BorderLayout.NORTH);
 		  this.getContentPane().add(panSet, BorderLayout.CENTER);
 		  this.getContentPane().add(panNLG, BorderLayout.SOUTH);
+		  this.getContentPane().add(panDebug, BorderLayout.EAST);
 		  //
 	  }
+	  
+	 public void runTimeStart(){
+		 chrono.setStartWaveTime();
+		 System.out.println(chrono.startWaveTime);
+	 }
+	 
+	 public void runTimeEnd(){
+		 chrono.setEndWaveTime();
+		 System.out.println(chrono.endWaveTime);
+	 }
+	 
+	 public void runTimeDisplay(){
+		 String chronoTotal = chrono.getChrono();
+		 System.out.println(chronoTotal);
+	 }
+
 }
