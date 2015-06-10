@@ -16,8 +16,8 @@ import fr.tcpmfa.util.Coordinate;
 
 
 public class DBTDConnexion {
-	private static String url="jdbc:mysql://localhost/DBTDJava";
-	private static String root = "root";
+	private static String url="jdbc:mysql://10.162.129.54/projet_java";
+	private static String root = "User";
 	private static String password = "";
 	private java.sql.Connection connection;
 	private java.sql.Statement statement;
@@ -27,6 +27,11 @@ public class DBTDConnexion {
 		this.statement=null;
 	}
 
+	/**
+	 * 
+	 * @return
+	 * @author schouteeten
+	 */
 	public Boolean open() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
