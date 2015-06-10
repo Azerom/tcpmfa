@@ -2,24 +2,22 @@ package fr.tcpmfa.util;
 
 public class Time {
 	
-	public long startWaveTime;
-	public long endWaveTime;
-	public long chronoTotal;
+	public long startTime;
+	public long endTime;
+	public long chrono;
 	
-	public void setStartWaveTime(){
-		this.startWaveTime=	System.currentTimeMillis();
+	public void setStartTime(){
+		this.startTime=	System.currentTimeMillis();
 	}
 
-	public void setEndWaveTime(){
-		this.endWaveTime = System.currentTimeMillis();
+	public void setEndTime(){
+		this.endTime = System.currentTimeMillis();
 	}
 	
 	public String getChrono(){
-		int chronoWaveTotal = (int)(endWaveTime-startWaveTime)/1000;
+		int chronoTotal = (int)(endTime-startTime)/1000;
 		
-		
-		return ("Minutes : "+chronoWaveTotal/60+" "+"Secondes : "+chronoWaveTotal%60);
+		return ("Minutes : "+chronoTotal/60+" "+"Secondes : "+chronoTotal%60);
 	}
-	
 
 }
