@@ -9,8 +9,6 @@ import fr.tcpmfa.util.Time;
 
 public class MenuPanel extends JPanel {
 
-	}
-
 }
 
 /*
