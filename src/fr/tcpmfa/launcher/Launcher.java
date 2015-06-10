@@ -60,18 +60,21 @@ public class Launcher extends JDialog {
 		  startTemps.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
 					System.out.println("Démarrage du temps en cours ..");
+					
 				}
 			});
 		  JButton endTemps = new JButton("Fin du temps");
 		  endTemps.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
 					System.out.println("Fin du temps en cours ..");
+					
 				}
 			});
 		  JButton affichageTemps = new JButton("Affichage du temps");
 		  affichageTemps.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
 					System.out.println("Affichage du temps en cours...");
+					
 				}
 			});
 		  	
