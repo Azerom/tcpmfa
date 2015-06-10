@@ -7,20 +7,8 @@ import fr.tcpmfa.util.Coordinate;
 
 public interface GraphicalElement {
 
-	public  Image getImage(Image){
-		return Image;
-	}
-	
-	public void setImage(Image Image){
-		this.Image = Image;
-	}
-	
-	public Coordinate getCoordinates(){
-		return Coordinate;
-	}
-	
-	public void setCoordinates(Coordinate Coordinates){
-		this.Coordinates = Coordinates;
-	}
-	
+	public  Image getImage();
+	public void setImage(Image Image);
+	public Coordinate getCoordinates();
+	public void setCoordinates(Coordinate Coordinates);
 }
