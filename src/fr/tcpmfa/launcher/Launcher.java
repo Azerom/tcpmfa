@@ -17,12 +17,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import fr.tcpmfa.Main;
+//PROVISOIRE DEBUG
+import fr.tcpmfa.util.Time;
 
 
 
 public class Launcher extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	
+	Time chrono = new Time();
 
 	  public Launcher(JFrame parent, String title, boolean modal){
 
@@ -52,7 +56,7 @@ public class Launcher extends JDialog {
 		  panWel.add(icon1);
 		  //
 		  
-		  //Debug
+		  //Debug ===================================================================================================================================================
 		  JPanel panDebug = new JPanel();
 		  panWel.setBorder(BorderFactory.createTitledBorder("Debug (A effacer par la suite)"));
 		  
@@ -60,6 +64,7 @@ public class Launcher extends JDialog {
 		  startTemps.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
 					System.out.println("Démarrage du temps en cours ..");
+					runTimeStart();
 					
 				}
 			});
@@ -67,21 +72,21 @@ public class Launcher extends JDialog {
 		  endTemps.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
 					System.out.println("Fin du temps en cours ..");
-					
+					runTimeEnd();
 				}
 			});
 		  JButton affichageTemps = new JButton("Affichage du temps");
 		  affichageTemps.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
 					System.out.println("Affichage du temps en cours...");
-					
+					runTimeDisplay();
 				}
 			});
 		  	
 		  panDebug.add(startTemps);
 		  panDebug.add(endTemps);
 		  panDebug.add(affichageTemps);
-		  //
+		  //==============================================================================================================================================================
 		  
 		  
 		  //Settings
@@ -144,4 +149,20 @@ public class Launcher extends JDialog {
 		  this.getContentPane().add(panDebug, BorderLayout.EAST);
 		  //
 	  }
+	  
+	 public void runTimeStart(){
+		 chrono.setStartWaveTime();
+		 System.out.println(chrono.startWaveTime);
+	 }
+	 
+	 public void runTimeEnd(){
+		 chrono.setEndWaveTime();
+		 System.out.println(chrono.endWaveTime);
+	 }
+	 
+	 public void runTimeDisplay(){
+		 String chronoTotal = chrono.getChrono();
+		 System.out.println(chronoTotal);
+	 }
+
 }

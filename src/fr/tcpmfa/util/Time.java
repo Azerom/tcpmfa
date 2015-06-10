@@ -23,6 +23,3 @@ public class Time {
 	
 
 }
-
-//	new java.util.Date();
-//	System.currentTimeMillis();
