@@ -178,5 +178,26 @@ public class DBTDConnexion {
 		return new Ennemy(moveSpeed, null, loot, HP, null, numberDamage, null, null, null, null);
 
 	}
+	/**
+	 * méthode servant a sauvegarder
+	 */
+	public void save(){
+		ResultSet info = null;
+		try {
+			info = statement.executeQuery("INSERT INTO `save`(`SaveNumber`, `Ressources`, `TimeSpend`, `BaseHp`, `Wave`, `N_Map`) VALUES ()");
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public void getSave( ){
+		
+		
+	}
 
 }
