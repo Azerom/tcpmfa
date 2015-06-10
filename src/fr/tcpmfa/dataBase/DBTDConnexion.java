@@ -81,9 +81,9 @@ public class DBTDConnexion {
 		}
 
 	}
-	
-	
-	
+
+
+
 	/**
 	 * récupère un ennemi en fonction de son ID dans la BDD
 	 * @param ID_Ennemy
@@ -98,56 +98,14 @@ public class DBTDConnexion {
 		int loot = 0;
 
 		try {
-			switch(ID_Ennemy){ 
-			case 1:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
-				HP = info.getInt(2);
-				numberDamage=info.getInt(3);
-				moveSpeed=info.getInt(4);
-				
-				resistanceType=info.getString(6);
-				loot=info.getInt(7);
-				break;
-			case 2:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
-				HP = info.getInt(2);
-				numberDamage=info.getInt(3);
-				moveSpeed=info.getInt(4);
-				
-				resistanceType=info.getString(6);
-				loot=info.getInt(7);
-				break;
-			case 3:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
-				HP = info.getInt(2);
-				numberDamage=info.getInt(3);
-				moveSpeed=info.getInt(4);
-				
-				resistanceType=info.getString(6);
-				loot=info.getInt(7);
-				break;
-			case 4:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
-				HP = info.getInt(2);
-				numberDamage=info.getInt(3);
-				moveSpeed=info.getInt(4);
-				
-				resistanceType=info.getString(6);
-				loot=info.getInt(7);
-				break;
-			case 5:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
-				HP = info.getInt(2);
-				numberDamage=info.getInt(3);
-				moveSpeed=info.getInt(4);
-				
-				resistanceType=info.getString(6);
-				loot=info.getInt(7);
-				break;
-			default:
-				System.out.println("erreur");
+			info = statement.executeQuery("SELECT * FROM Ennemy WHERE IdEnnemy="+ID_Ennemy);
+			info.first();
+			HP = info.getInt(2);
+			numberDamage=info.getInt(3);
+			moveSpeed=info.getInt(4);
 
-			}
+			resistanceType=info.getString(6);
+			loot=info.getInt(7);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -156,7 +114,5 @@ public class DBTDConnexion {
 		return new Ennemy(moveSpeed, null, loot, HP, null, numberDamage, null, null, null, null);
 
 	}
-
-
 
 }
