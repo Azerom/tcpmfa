@@ -1,6 +1,7 @@
 package fr.tcpmfa.engine;
 
 import fr.tcpmfa.consoleGraphic.Display;
+import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.util.Coordinate;
 import fr.tcpmfa.util.Direction;
 
@@ -35,19 +36,20 @@ public class Game {
 	
 	//Test code around here, remove ASAP
 	public Game(int hp, int ressource){
+		
+		DBTDConnexion bdd =new DBTDConnexion();
+		bdd.open();
+		
 		this.hp = hp;
 		this.ressource = ressource;
 		this.display = new Display();
-		this.map = new Map(this, new Coordinate(0, 20), new Coordinate(0,0), null);
+		this.map = bdd.getMap(1, this);
+		bdd.close();
+		System.out.println(map.getStartPoint().getCheckPoint().getDirection());
 		
-		Point point1 = new Point(0, 10);
-		Point point2 = new Point(0, 0);
-		point1.addCheckPoint(new CheckPoint(Direction.SOUTH, point2));
-		point2.addCheckPoint(new CheckPoint(Direction.NORTH, point1));
-		
-		actualWave = new WaveEnnemy(this, point2);
-		Ennemy ennemy = new Ennemy(0, null, 15, 20, new CheckPoint(Direction.NORTH, point1), 5, null, "Test Guy", new Coordinate(0,0), this);
-		actualWave.add(ennemy);
+		actualWave = new WaveEnnemy(this, map.getStartPoint());
+//		Ennemy ennemy = new Ennemy(0, null, 15, 20, new CheckPoint(Direction.NORTH, map.), 5, null, "Test Guy", new Coordinate(0,0), this);
+//		actualWave.add(ennemy);
 		
 		
 	}

@@ -2,14 +2,16 @@ package fr.tcpmfa.dataBase;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import fr.tcpmfa.engine.Ennemy;
-import fr.tcpmfa.engine.Point;
 import fr.tcpmfa.engine.Map;
+import fr.tcpmfa.engine.CheckPoint;
+import fr.tcpmfa.engine.Ennemy;
+import fr.tcpmfa.engine.Game;
+import fr.tcpmfa.engine.Point;
 import fr.tcpmfa.util.Coordinate;
+import fr.tcpmfa.util.Direction;
 
 
 
@@ -61,16 +63,15 @@ public class DBTDConnexion {
 			if(e.isEqual(chekP)){
 				return e;
 			}
-			return null;
 		}
 		return null;
 	}
 	
-	public void getMap(int ID_Map){
+	public Map getMap(int ID_Map, Game game){
 		ResultSet info = null;
-		Coordinate startPoint;
-		Coordinate endPoint;
-		ArrayList<Point> liste ;
+		Coordinate startPoint = null;
+		Coordinate endPoint = null;
+		ArrayList<Point> liste = null;
 
 
 		try {
@@ -88,17 +89,53 @@ public class DBTDConnexion {
 			}
 			
 			
-			/*info = statement.executeQuery("SELECT * FROM contain");
+			info = statement.executeQuery("SELECT * FROM `contain` "
+										+ "INNER JOIN point AS point1 "
+											+ "ON contain.IdPoint = point1.IdPoint "
+										+ "INNER JOIN point AS point2 "
+											+ "ON contain.IdPoint_1 = point2.IdPoint "
+										+ "WHERE point1.N_Map = " + ID_Map);
 			while(info.next()){
 				
-				Point P1= findPoint(liste, chekP);
-			}*/
+				Coordinate coord1 = new Coordinate(info.getInt(5), info.getInt(6));
+				Coordinate coord2 = new Coordinate(info.getInt(9), info.getInt(10));
+				
+				
+				Point P1= findPoint(liste, coord1);
+				Point P2= findPoint(liste, coord2);
+				
+				Direction direction;
+
+				switch(info.getInt(1)){
+					case 0 :
+						direction = Direction.NORTH;
+						break;
+					case 1 :
+						direction = Direction.EAST;
+						break;
+					case 2 :
+						direction = Direction.SOUTH;
+						break;
+					case 3 :
+						direction = Direction.WEST;
+						break;
+					default :
+						direction = null;
+						break;
+				}
+				
+				P1.addCheckPoint(new CheckPoint(direction, P2));
+				
+				
+			}
 			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return new Map(game, endPoint, startPoint, liste);
 
 	}
 
