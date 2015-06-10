@@ -10,6 +10,7 @@ import fr.tcpmfa.engine.CheckPoint;
 import fr.tcpmfa.engine.Ennemy;
 import fr.tcpmfa.engine.Game;
 import fr.tcpmfa.engine.Point;
+import fr.tcpmfa.engine.Tower;
 import fr.tcpmfa.util.Coordinate;
 import fr.tcpmfa.util.Direction;
 
@@ -72,6 +73,7 @@ public class DBTDConnexion {
 		Coordinate startPoint = null;
 		Coordinate endPoint = null;
 		ArrayList<Point> liste = null;
+		ArrayList<Tower> tower = null;
 
 
 		try {
@@ -126,16 +128,21 @@ public class DBTDConnexion {
 				
 				P1.addCheckPoint(new CheckPoint(direction, P2));
 				
-				
 			}
 			
+			info = statement.executeQuery("SELECT * FROM TowerEmplacement WHERE N_Map="+ID_Map);
+			tower = new ArrayList<Tower> ();
+			while(info.next()){
+				Tower emplacement= new Tower(0,null,null, new Coordinate(info.getInt(2),info.getInt(3)),null);
+				tower.add(emplacement);
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return new Map(game, endPoint, startPoint, liste);
+		return new Map(game, endPoint, startPoint, liste,tower);
 
 	}
 

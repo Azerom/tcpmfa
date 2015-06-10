@@ -40,11 +40,12 @@ public class Map {
 	 * @param coordStart
 	 * @param points: Points de navigations
 	 */
-	public Map(Game game, Coordinate coordEnd, Coordinate coordStart, ArrayList<Point> points){
+	public Map(Game game, Coordinate coordEnd, Coordinate coordStart, ArrayList<Point> points, ArrayList<Tower> towers){
 		this.game = game;
 		this.coordEnd = coordEnd;
 		this.coordStart = coordStart;
 		this.points = points;
+		this.towers= towers;
 	}
 	
 	public Coordinate getCoordStart() {
