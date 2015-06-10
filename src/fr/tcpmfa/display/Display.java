@@ -64,7 +64,15 @@ public class Display extends JFrame {
 	}
 	
 	public void drawGraphicalElement(final GraphicalElement gElement, final Graphics g) {
-		g.drawImage(gElement.getImage(), gElement.getCoord().getX(), gElement.getCoord().getY(), 15, 15,  null); 
+		int xP = gElement.getCoord().getX() - 15;
+		int yP = gElement.getCoord().getY() - 15;
+		g.drawImage(gElement.getImage(), xP, yP, 30, 30,  null);
+		
+//		g.setColor(Color.red);
+//		g.fillRect(xP, yP - 10, 30, 5);
+//		
+//		g.setColor(Color.green);
+//		g.fillRect(xP, yP - 10, Math.round(arg0), height);
 	}
 
 	public void drawAllGraphicalElement() {

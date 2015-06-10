@@ -12,7 +12,7 @@ public class Tower extends Element {
 		super(coord, nmdDamage, typeDamage, name, game);
 		this.cost = 0;
 		this.damageType = null;
-		this.setImage("Images/TowerIcon1.png");
+		this.setImage("Images/Tour_3.png");
 	}
 
 	@Override
