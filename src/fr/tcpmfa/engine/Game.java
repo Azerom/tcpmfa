@@ -3,7 +3,7 @@ package fr.tcpmfa.engine;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import fr.tcpmfa.consoleGraphic.Display;
+import fr.tcpmfa.display.Display;
 import fr.tcpmfa.dataBase.DBTDConnexion;
 
 /**

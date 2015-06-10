@@ -1,9 +1,7 @@
 package fr.tcpmfa.display;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Image;
-import java.awt.Point;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -30,12 +28,12 @@ public class Display extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		JPanel map = new JPanel();
-		JLabel image = new JLabel( new ImageIcon("Images/Map1F.png"));
-		map.add(image);
-		map.setLayout(new BorderLayout());
-		map.add(image, BorderLayout.EAST);
-		this.setContentPane(map);
+		
+		JPanel menuPanel = new JPanel();
+		JPanel mapPanel = new JPanel();
+		JPanel interfacePanel = new JPanel();
+		
+		
 		this.setVisible(true);
 		}
 	}
