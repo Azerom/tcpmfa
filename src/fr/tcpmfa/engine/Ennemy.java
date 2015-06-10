@@ -30,7 +30,6 @@ public class Ennemy extends Element {
 	/**
 	 * Default contructor</br>
 	 * 
-	 * Have to many parameter for an actual use, prefer use the BDD component to collect the data
 	 * @param moveSpeed
 	 * @param resistance
 	 * @param loot
