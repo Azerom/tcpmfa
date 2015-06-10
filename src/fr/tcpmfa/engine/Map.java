@@ -45,7 +45,13 @@ public class Map {
 		this.coordEnd = coordEnd;
 		this.coordStart = coordStart;
 		this.points = points;
-		this.towers= towers;
+
+//		this.towers= towers;
+
+		
+		//Test code remove ASAP
+		this.towers = new ArrayList<Tower>();
+		this.towers.add(new Tower(1, null, "Tour", new Coordinate(1, 10), game));
 	}
 	
 	public Coordinate getCoordStart() {
