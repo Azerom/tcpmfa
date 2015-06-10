@@ -17,7 +17,7 @@ public class Main {
 
 		DBTDConnexion bdd = new DBTDConnexion();
 		bdd.open();
-		bdd.getMap(2);
+		bdd.getMap(1);
 		bdd.close();
 		
 		for(int i = 0; i < 100; i++){
