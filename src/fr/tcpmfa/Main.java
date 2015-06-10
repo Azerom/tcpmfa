@@ -16,6 +16,9 @@ public class Main {
 		Game game = new Game(15, 20);
 
 		DBTDConnexion bdd = new DBTDConnexion();
+		bdd.open();
+		bdd.getMap(2);
+		bdd.close();
 		
 		for(int i = 0; i < 100; i++){
 			game.turn();
