@@ -60,7 +60,7 @@ public class WaveEnnemy extends ArrayList<Ennemy> {
 			if(this.countDown == 0 ){
 				System.out.println("Add from reserve");
 				this.add(this.reserve.remove(0));
-				this.countDown = 10;
+				this.countDown = 50;
 			}
 			else
 				this.countDown--;
