@@ -1,5 +1,9 @@
 package fr.tcpmfa.engine;
 
+import java.util.Random;
+
+import sun.security.pkcs11.Secmod.DbMode;
+import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.util.Coordinate;
 
 /**
@@ -27,6 +31,14 @@ public class Ennemy extends Element {
 	 */
 	private CheckPoint checkPoint;
 	
+	public CheckPoint getCheckPoint() {
+		return checkPoint;
+	}
+
+	public void setCheckPoint(CheckPoint checkPoint) {
+		this.checkPoint = checkPoint;
+	}
+
 	/**
 	 * Default contructor</br>
 	 * 
@@ -59,7 +71,7 @@ public class Ennemy extends Element {
 		this.coord.moveInDirection(checkPoint.getDirection());
 		
 		if(this.coord.isEqual(checkPoint.getNextPoint())){
-			System.out.println("I reach a checkpoint");
+			System.out.println(this.name + " reach a checkpoint");
 			this.checkPoint = checkPoint.getNextPoint().getCheckPoint();
 		}
 	}
@@ -87,5 +99,21 @@ public class Ennemy extends Element {
 		
 		System.out.println(this.name + " = X : " + coord.getX() + ", Y : " + coord.getY());
 		
+	}
+	
+	public static Ennemy generateEnnemy(int id){
+		DBTDConnexion bdd = new DBTDConnexion();
+		
+		bdd.open();
+		
+		Ennemy ennemy =  bdd.getEnnemy(id);
+		
+		bdd.close();
+		
+		return ennemy;
+	}
+	
+	public static Ennemy generateRandomEnnemy(){
+		return generateEnnemy(new Random().nextInt(4)+1);
 	}
 }
