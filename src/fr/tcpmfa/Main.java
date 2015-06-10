@@ -14,7 +14,7 @@ public class Main {
 		//------------------------
 		Game game = new Game(15, 20);
 
-		for(int i = 0; i < 100; i++){
+		while(true){
 			game.turn();
 			
 		}

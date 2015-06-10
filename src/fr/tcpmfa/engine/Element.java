@@ -17,6 +17,7 @@ public abstract class Element implements GraphicalElement{
 	protected String name;
 	protected Game game;
 	protected int wait;
+	protected Image image;
 	
 	public Element(Coordinate coord, int nmdDamage, Type typeDamage, String name, Game game){
 		this.coord = coord;
@@ -62,14 +63,13 @@ public abstract class Element implements GraphicalElement{
 		this.name = name;
 	}
 	public Image getImage(){
-	       try {                
-	          return ImageIO.read(new File("Images/bluescreen.png"));
-	        } catch (IOException ex) {
-	             // handle exception...
-	        }
-	       return null;
+		return image;
 	}
-	public void setImage(Image image){
-		
+	public void setImage(String image){
+	       try {                
+		          this.image =  ImageIO.read(new File(image));
+		        } catch (IOException ex) {
+		             // handle exception...
+		        }
 	}
 }

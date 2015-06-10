@@ -53,6 +53,7 @@ public class Ennemy extends Element {
 		this.loot = loot;
 		this.hp = hp;
 		this.checkPoint = checkpoint;
+		this.setImage("Images/bluescreen.png");
 		
 		System.out.println("hello, i am " + this.name);
 	}

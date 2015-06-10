@@ -67,6 +67,7 @@ public class Game {
 	public void turn(){
 		this.graphicalList.clear();
 		this.graphicalList.addAll(actualWave);
+		this.graphicalList.addAll(map.getTowers());
 		display.afficher();
 		this.actualWave.act();
 		for(Tower t : this.getMap().getTowers()){
