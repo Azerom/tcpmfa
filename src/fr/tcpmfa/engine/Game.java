@@ -30,7 +30,7 @@ public class Game {
 		this.ressource = ressource;
 		this.map = map;
 		this.display = new Display();
-		actualWave = new WaveEnnemy(this);
+		actualWave = new WaveEnnemy(this, null);
 	}
 	
 	//Test code around here, remove ASAP
@@ -39,22 +39,22 @@ public class Game {
 		this.ressource = ressource;
 		this.display = new Display();
 		this.map = new Map(this, new Coordinate(0, 20), new Coordinate(0,0), null);
-		actualWave = new WaveEnnemy(this);
+		
 		Point point1 = new Point(0, 10);
 		Point point2 = new Point(0, 0);
 		point1.addCheckPoint(new CheckPoint(Direction.SOUTH, point2));
 		point2.addCheckPoint(new CheckPoint(Direction.NORTH, point1));
+		
+		actualWave = new WaveEnnemy(this, point2);
 		Ennemy ennemy = new Ennemy(0, null, 15, 20, new CheckPoint(Direction.NORTH, point1), 5, null, "Test Guy", new Coordinate(0,0), this);
 		actualWave.add(ennemy);
-		display.addGraphicalElement(ennemy);
+		
 		
 	}
 	
 	public void turn(){
-		for(Ennemy e : actualWave){
-			e.act();
-//			display.display();
-		}
+//		display.display();
+		this.actualWave.act();
 	}
 
 	public int getHp() {
