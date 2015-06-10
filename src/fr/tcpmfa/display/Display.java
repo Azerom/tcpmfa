@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Map extends JFrame {
+public class Display extends JFrame {
 
 	    
 	private Image image;
@@ -24,7 +24,7 @@ public class Map extends JFrame {
 	public void addGrahicalElement(GraphicalElement Element1){
 
 	}
-	public Map(){
+	public Display(){
 		this.setTitle("Tower Defense TCPMFA");
 		this.setSize(900, 600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

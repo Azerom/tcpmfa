@@ -74,6 +74,7 @@ public class Ennemy extends Element {
 	 */
 	public void die(){
 		game.deadTakeAct(this);
+		System.out.println(this.name + " die");
 	}
 
 	@Override
@@ -118,5 +119,13 @@ public class Ennemy extends Element {
 
 	public void setCheckPoint(CheckPoint checkPoint) {
 		this.checkPoint = checkPoint;
+	}
+	
+	public void takeDamage(int damage, Type type){
+		this.hp -= damage;
+		System.out.println(this.name + " take " + damage + " damage, remaing " + this.hp + " hp");
+		if(hp <= 0){
+			this.die();
+		}
 	}
 }
