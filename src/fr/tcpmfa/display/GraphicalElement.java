@@ -1,22 +1,26 @@
 package fr.tcpmfa.display;
 
+import java.awt.Image;
+
+import fr.tcpmfa.util.Coordinate;
+
 
 public interface GraphicalElement {
 
-	public default Image getImage(java.awt.Image Image){
+	public  Image getImage(Image){
 		return Image;
 	}
 	
-	public default void setImage(java.awt.Image newImage){
-		
+	public void setImage(Image Image){
+		this.Image = Image;
 	}
 	
-	public Coordonnees getCoordinates(){
-		return Coordonnees;
+	public Coordinate getCoordinates(){
+		return Coordinate;
 	}
 	
-	public Coordonnees setCoordinates(){
-		
+	public void setCoordinates(Coordinate Coordinates){
+		this.Coordinates = Coordinates;
 	}
 	
 }
