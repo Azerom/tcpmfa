@@ -63,11 +63,15 @@ public class Game {
 	public void turn(){
 		//		display.display();
 		this.actualWave.act();
+		for(Tower t : this.getMap().getTowers()){
+			t.act();
+		}
+		
 		for(Ennemy e : dead){
 			this.actualWave.remove(e);
 		}
 		this.dead.clear();
-
+		
 	}
 
 	public int getHp() {
@@ -80,6 +84,7 @@ public class Game {
 
 	public void decreaseHp(int damage){
 		this.hp -= damage;
+		System.out.println("System : Lose " + damage + " hp, " + this.hp + " remaing");
 	}
 
 	public int getRessource() {
