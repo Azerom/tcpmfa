@@ -2,9 +2,11 @@ package fr.tcpmfa.display;
 
 import java.awt.Image;
 
-public class Map {
+import javax.swing.JFrame;
 
-	
+public class Map extends JFrame {
+
+
 	private Image Image;
 	public Image getImage(){
 		return Image;
@@ -13,7 +15,14 @@ public class Map {
 		this.Image = Image;
 	}
 	public void addGrahicalElement(GraphicalElement Element1){
-		
+
 	}
-}
+	public Map(){
+		this.setTitle("Animation");
+		this.setSize(800, 300);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		}
+	}
 
