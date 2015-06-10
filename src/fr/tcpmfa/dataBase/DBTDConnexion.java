@@ -53,15 +53,15 @@ public class DBTDConnexion {
 		Coordinate startPoint;
 		Coordinate endPoint;
 		ArrayList<Point> liste ;
-		
-		
+
+
 		try {
 			info = statement.executeQuery("SELECT * FROM map WHERE N_Map="+ID_Map);
 
 			info.first();
 			startPoint=new Coordinate(info.getInt(2), info.getInt(3));
 			endPoint = new Coordinate(info.getInt(4), info.getInt(5));
-			
+
 			info = statement.executeQuery("SELECT * FROM point WHERE N_Map="+ID_Map);
 
 			liste=new ArrayList<Point> ();
@@ -69,6 +69,80 @@ public class DBTDConnexion {
 				Point point = new Point(info.getInt(2), info.getInt(3));
 				liste.add(point);
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	/**
+	 * récupère un ennemi en fonction de son ID dans la BDD
+	 * @param ID_Ennemy
+	 * @author schouteeten
+	 */
+	public void getEnnemy(int ID_Ennemy){
+		ResultSet info = null;
+		final int HP;
+		final int numberDamage;
+		final int moveSpeed;
+		final int range;
+		final String resistanceType;
+		final int loot;
+
+		try {
+			switch(ID_Ennemy){ 
+			case 1:
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE N_Map="+ID_Ennemy);
+				HP = info.getInt(2);
+				numberDamage=info.getInt(3);
+				moveSpeed=info.getInt(4);
+				range=info.getInt(5);
+				resistanceType=info.getString(6);
+				loot=info.getInt(7);
+				break;
+			case 2:
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE N_Map="+ID_Ennemy);
+				HP = info.getInt(2);
+				numberDamage=info.getInt(3);
+				moveSpeed=info.getInt(4);
+				range=info.getInt(5);
+				resistanceType=info.getString(6);
+				loot=info.getInt(7);
+				break;
+			case 3:
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE N_Map="+ID_Ennemy);
+				HP = info.getInt(2);
+				numberDamage=info.getInt(3);
+				moveSpeed=info.getInt(4);
+				range=info.getInt(5);
+				resistanceType=info.getString(6);
+				loot=info.getInt(7);
+				break;
+			case 4:
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE N_Map="+ID_Ennemy);
+				HP = info.getInt(2);
+				numberDamage=info.getInt(3);
+				moveSpeed=info.getInt(4);
+				range=info.getInt(5);
+				resistanceType=info.getString(6);
+				loot=info.getInt(7);
+				break;
+			case 5:
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE N_Map="+ID_Ennemy);
+				HP = info.getInt(2);
+				numberDamage=info.getInt(3);
+				moveSpeed=info.getInt(4);
+				range=info.getInt(5);
+				resistanceType=info.getString(6);
+				loot=info.getInt(7);
+				break;
+			default:
+				System.out.println("erreur");
+
+			}
+
+
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
