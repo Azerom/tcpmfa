@@ -2,7 +2,6 @@ package fr.tcpmfa.engine;
 
 import java.util.Random;
 
-import sun.security.pkcs11.Secmod.DbMode;
 import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.util.Coordinate;
 
@@ -31,13 +30,7 @@ public class Ennemy extends Element {
 	 */
 	private CheckPoint checkPoint;
 	
-	public CheckPoint getCheckPoint() {
-		return checkPoint;
-	}
 
-	public void setCheckPoint(CheckPoint checkPoint) {
-		this.checkPoint = checkPoint;
-	}
 
 	/**
 	 * Default contructor</br>
@@ -115,5 +108,13 @@ public class Ennemy extends Element {
 	
 	public static Ennemy generateRandomEnnemy(){
 		return generateEnnemy(new Random().nextInt(4)+1);
+	}
+	
+	public CheckPoint getCheckPoint() {
+		return checkPoint;
+	}
+
+	public void setCheckPoint(CheckPoint checkPoint) {
+		this.checkPoint = checkPoint;
 	}
 }

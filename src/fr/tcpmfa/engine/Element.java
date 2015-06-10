@@ -5,16 +5,11 @@ import fr.tcpmfa.util.Coordinate;
 
 public abstract class Element implements GraphicalElement{
 	protected Coordinate coord;
-	public void setCoord(Coordinate coord) {
-		this.coord = coord;
-	}
+
 	protected int nmbDamage;
 	protected Type typeDamage;
 	protected String name;
 	protected Game game;
-	public void setName(String name) {
-		this.name = name;
-	}
 	protected int wait;
 	
 	public Element(Coordinate coord, int nmdDamage, Type typeDamage, String name, Game game){
@@ -25,9 +20,7 @@ public abstract class Element implements GraphicalElement{
 		this.game = game;
 		this.wait = 0;
 	}
-	public void setGame(Game game) {
-		this.game = game;
-	}
+	
 	public abstract void act();
 	
 	public void attack(Element cible){
@@ -41,8 +34,14 @@ public abstract class Element implements GraphicalElement{
 	public Game getGame(){
 		return game;
 	}
+	public void setGame(Game game) {
+		this.game = game;
+	}
 	public Coordinate getCoord() {
 		return coord;
+	}
+	public void setCoord(Coordinate coord) {
+		this.coord = coord;
 	}
 	public int getNmbDamage() {
 		return nmbDamage;
@@ -53,7 +52,9 @@ public abstract class Element implements GraphicalElement{
 	public String getName() {
 		return name;
 	}
-	
+	public void setName(String name) {
+		this.name = name;
+	}
 	public char getImage(){
 		return 'X';
 	}
