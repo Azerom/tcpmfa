@@ -39,7 +39,7 @@ public class Game {
 	//	}
 
 	//Test code around here, remove ASAP
-	public Game(int hp, int ressource){
+	public Game(int hp, int ressource, int id_Map){
 		dead = new ArrayList<Ennemy>();
 		DBTDConnexion bdd =new DBTDConnexion();
 		bdd.open();
@@ -47,7 +47,7 @@ public class Game {
 		this.hp = hp;
 		this.ressource = ressource;
 		this.display = new Display();
-		this.map = bdd.getMap(1, this);
+		this.map = bdd.getMap(id_Map, this);
 		bdd.close();
 
 		actualWave = new WaveEnnemy(this, map.getStartPoint());

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -88,26 +89,79 @@ public class Launcher extends JDialog {
 		  panDebug.add(affichageTemps);
 		  //==============================================================================================================================================================
 		  
-		  
+		  //========
 		  //Settings
+		  //========
 		  JPanel panSet = new JPanel();
 		  panSet.setBackground(Color.RED);
 		  panSet.setPreferredSize(new Dimension(200, 20));
 		  panSet.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-
-		  	//Quelques presets
+		  //Settings - Pseudo
 		  	JPanel panSetPseudo = new JPanel();
 		  	JTextField pseudo = new JTextField();
 		    pseudo.setPreferredSize(new Dimension(100, 25));
 		    JLabel pseudoLabel = new JLabel("Pseudo :");
 		    panSetPseudo.add(pseudoLabel);
 		    panSetPseudo.add(pseudo);
-		  	//
-		  	panSet.add(panSetPseudo);
-
 		  //
-		  
-		  
+		  	panSet.add(panSetPseudo);
+		  //Settings - Option HP
+		  	JPanel panSetHP = new JPanel();
+		  	panSetHP.setPreferredSize(new Dimension(200, 60));
+		  	panSetHP.setBorder(BorderFactory.createTitledBorder("Nombre de points de vie :"));
+		  	JComboBox<String> HP = new JComboBox<String>();
+		  	HP.addItem("10");
+		  	HP.addItem("15");
+		  	HP.addItem("20");
+		  	HP.addItem("25");
+		  	HP.addItem("30");
+		  	HP.addItem("35");
+		  	HP.addItem("40");
+		  	HP.addItem("45");
+		  	HP.addItem("50");
+		  	JLabel HPLabel = new JLabel("Points de vie : ");
+		  	
+		  	panSetHP.add(HPLabel);
+		  	panSetHP.add(HP);
+		  //
+		  	panSet.add(panSetHP);
+		  //Settings - Ressources
+		  	JPanel panSetRessources = new JPanel();
+		  	panSetRessources.setPreferredSize(new Dimension(200, 60));
+		  	panSetRessources.setBorder(BorderFactory.createTitledBorder("Nombre de points de ressources :"));
+		  	JComboBox<String> Ressources = new JComboBox<String>();
+		  	Ressources.addItem("10");
+		  	Ressources.addItem("15");
+		  	Ressources.addItem("20");
+		  	Ressources.addItem("25");
+		  	Ressources.addItem("30");
+		  	Ressources.addItem("35");
+		  	Ressources.addItem("40");
+		  	Ressources.addItem("45");
+		  	Ressources.addItem("50");
+		  	JLabel ressourcesLabel = new JLabel("Ressources : ");
+		  	
+		  	panSetRessources.add(ressourcesLabel);
+		  	panSetRessources.add(Ressources);
+		  //
+		  	panSet.add(panSetRessources);
+			  //Settings - ChoixMap
+		  	JPanel panSetMap = new JPanel();
+		  	panSetMap.setPreferredSize(new Dimension(200, 60));
+		  	panSetMap.setBorder(BorderFactory.createTitledBorder("Choix de la Map"));
+		  	JComboBox<String> id_Map = new JComboBox<String>();
+		  	id_Map.addItem("1");
+		  	id_Map.addItem("2");
+		  	id_Map.addItem("3");
+		  	JLabel mapLabel = new JLabel("Map : ");
+		  	
+		  	panSetMap.add(mapLabel);
+		  	panSetMap.add(id_Map);
+		  //
+		  	panSet.add(panSetMap);
+		  //============
+		  	
+		  	
 		  //New-LoadGame
 		  JPanel panNLG = new JPanel();
 		  panNLG.setBorder(BorderFactory.createTitledBorder("Jeu"));
@@ -115,8 +169,9 @@ public class Launcher extends JDialog {
 		  JButton newGameButton = new JButton("Nouvelle Partie");
 		  newGameButton.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent arg0) {
-				  System.out.println("Nouvelle Partie Commencée");
-				  Main.launch();
+				  
+				  System.out.println("Pseudo : "+pseudo.getText()+"\nNombre de Points de vie : "+HP.getSelectedItem()+"\nRessources : "+Ressources.getSelectedItem()+"\nN°Map :"+id_Map.getSelectedItem());
+				  Main.launch(pseudo, HP, Ressources, id_Map);
 			  }
 		  });
 		  
