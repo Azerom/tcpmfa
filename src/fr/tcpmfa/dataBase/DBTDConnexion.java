@@ -100,7 +100,7 @@ public class DBTDConnexion {
 		try {
 			switch(ID_Ennemy){ 
 			case 1:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE IdEnnemy="+ID_Ennemy);
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
@@ -109,7 +109,7 @@ public class DBTDConnexion {
 				loot=info.getInt(7);
 				break;
 			case 2:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE IdEnnemy="+ID_Ennemy);
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
@@ -118,7 +118,7 @@ public class DBTDConnexion {
 				loot=info.getInt(7);
 				break;
 			case 3:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE IdEnnemy="+ID_Ennemy);
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
@@ -127,7 +127,7 @@ public class DBTDConnexion {
 				loot=info.getInt(7);
 				break;
 			case 4:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE IdEnnemy="+ID_Ennemy);
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
@@ -136,7 +136,7 @@ public class DBTDConnexion {
 				loot=info.getInt(7);
 				break;
 			case 5:
-				info = statement.executeQuery("SELECT * FROM Ennemy WHERE ID_Ennemy="+ID_Ennemy);
+				info = statement.executeQuery("SELECT * FROM Ennemy WHERE IdEnnemy="+ID_Ennemy);
 				HP = info.getInt(2);
 				numberDamage=info.getInt(3);
 				moveSpeed=info.getInt(4);
