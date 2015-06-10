@@ -1,6 +1,12 @@
 package fr.tcpmfa.engine;
 
-import fr.tcpmfa.consoleGraphic.GraphicalElement;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import fr.tcpmfa.display.GraphicalElement;
 import fr.tcpmfa.util.Coordinate;
 
 public abstract class Element implements GraphicalElement{
@@ -55,10 +61,15 @@ public abstract class Element implements GraphicalElement{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public char getImage(){
-		return 'X';
+	public Image getImage(){
+	       try {                
+	          return ImageIO.read(new File("Images/bluescreen.png"));
+	        } catch (IOException ex) {
+	             // handle exception...
+	        }
+	       return null;
 	}
-	public void setImage(char image){
+	public void setImage(Image image){
 		
 	}
 }

@@ -9,6 +9,6 @@ public interface GraphicalElement {
 
 	public  Image getImage();
 	public void setImage(Image Image);
-	public Coordinate getCoordinates();
-	public void setCoordinates(Coordinate Coordinates);
+	public Coordinate getCoord();
+	public void setCoord(Coordinate Coordinates);
 }

@@ -1,36 +1,27 @@
 package fr.tcpmfa.display;
 
-import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MapPanel extends JPanel{
-	
- private Image background;
+ 
+	private static final long serialVersionUID = 3829369919316966211L;
+	private Image image;
 
-public void Background(){
-	if (ID_map = 1){
-			JLabel image = new JLabel( new ImageIcon("Images/Map1F.png"));
+	public void setImage(final Image image) {
+		this.image = image;
 	}
-	else {
-	if (ID_map = 2){
-		JLabel image = new JLabel( new ImageIcon("Images/Map2F.png"));
-	else {
-		JLabel image1 = new JLabel( new ImageIcon("Images/Map3F.png"));
-			}
+
+	public Image getImage() {
+		return this.image;
 	}
+
+	@Override
+	protected void paintComponent(final Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(this.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);
 	}
-	
+
 }
-}
-/*
- **Affiche MAP 1 quand ID_map = 1
- **Affiche MAP 2 quand ID_map = 2
- **Affiche MAP 3 quand ID_map = 3
- */

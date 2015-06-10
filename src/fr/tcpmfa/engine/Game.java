@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import fr.tcpmfa.display.Display;
+import fr.tcpmfa.display.GraphicalElement;
 import fr.tcpmfa.dataBase.DBTDConnexion;
 
 /**
@@ -21,6 +22,8 @@ public class Game {
 	private Map map;
 
 	private ArrayList<Ennemy> dead;
+	
+	private ArrayList<GraphicalElement> graphicalList;
 
 	//	/**
 	//	 * Default constructeur</br>
@@ -44,16 +47,17 @@ public class Game {
 		DBTDConnexion bdd =new DBTDConnexion();
 		bdd.open();
 
+		this.graphicalList = new ArrayList<GraphicalElement>();
 		this.hp = hp;
 		this.ressource = ressource;
-		this.display = new Display();
+		this.display = new Display("Test", this.graphicalList);
 		this.map = bdd.getMap(1, this);
 		bdd.close();
 
 		actualWave = new WaveEnnemy(this, map.getStartPoint());
 		//		Ennemy ennemy = new Ennemy(0, null, 15, 20, new CheckPoint(Direction.NORTH, map.), 5, null, "Test Guy", new Coordinate(0,0), this);
 		//		actualWave.add(ennemy);
-
+		
 
 	}
 
@@ -61,7 +65,9 @@ public class Game {
 		this.dead.add(dead);
 	}
 	public void turn(){
-		//		display.display();
+		this.graphicalList.clear();
+		this.graphicalList.addAll(actualWave);
+		display.afficher();
 		this.actualWave.act();
 		for(Tower t : this.getMap().getTowers()){
 			t.act();
@@ -71,7 +77,12 @@ public class Game {
 			this.actualWave.remove(e);
 		}
 		this.dead.clear();
-		
+		try {
+			Thread.sleep(50);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	public int getHp() {

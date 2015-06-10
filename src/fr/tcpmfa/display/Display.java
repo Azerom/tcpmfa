@@ -1,40 +1,87 @@
 package fr.tcpmfa.display;
 
-import java.awt.BorderLayout;
-import java.awt.Image;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class Display extends JFrame {
 
 	    
-	private Image image;
-	;
-	public Image getImage(){
-		return image;
-	}
-	public void setImage(Image Image){
-		this.image = Image;
-	}
-	public void addGrahicalElement(GraphicalElement Element1){
-
-	}
-	public Display(){
-		this.setTitle("Tower Defense TCPMFA");
-		this.setSize(900, 600);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	private static final long serialVersionUID = -9188791268601682170L;
+	private BufferedImage image;
+	private MapPanel panel;
+	
+	private ArrayList<GraphicalElement> elements;
+	
+	public Display(String titre, ArrayList<GraphicalElement> elements){
+		super(titre);
+		this.setSize(600, 600);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		
-		JPanel menuPanel = new JPanel();
-		JPanel mapPanel = new JPanel();
-		JPanel interfacePanel = new JPanel();
-		
-		
+		this.panel = new MapPanel();
+		this.setContentPane(this.panel);
+		this.setBackground(Color.black);
+		this.elements = elements;
 		this.setVisible(true);
+		this.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
+	public void afficher() {
+		this.empty();
+		this.drawAllGraphicalElement();
+		this.panel.setImage(image);
+		this.panel.repaint();
+	}
+	
+	private void empty() {
+		this.image = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_RGB);
+		Graphics g = this.image.getGraphics();
+		g.setColor(Color.black);
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+	}
+	
+	public void drawGraphicalElement(final GraphicalElement gElement, final Graphics g) {
+		g.drawImage(gElement.getImage(), gElement.getCoord().getX(), gElement.getCoord().getY(), 15, 15,  null); 
+	}
+
+	public void drawAllGraphicalElement() {
+		Graphics g = this.image.getGraphics();
+		for (GraphicalElement gElement : elements) {
+			this.drawGraphicalElement(gElement, g);
 		}
 	}
+	
+//	private int calcX(float x){
+//		return (int)Math.ceil(this.getContentPane().getWidth()*(x/this.map.getWidth()));
+//		
+//	}
+//	
+//	private int calcY(float y){
+//		return (int)Math.ceil(this.getContentPane().getWidth()*(y/this.map.getHeight()));
+//	}
+	
+}
 
