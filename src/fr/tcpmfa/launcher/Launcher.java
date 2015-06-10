@@ -26,7 +26,7 @@ public class Launcher extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	
-	Time chrono = new Time();
+	Time chronoLauncher = new Time();
 
 	  public Launcher(JFrame parent, String title, boolean modal){
 
@@ -151,18 +151,18 @@ public class Launcher extends JDialog {
 	  }
 	  
 	 public void runTimeStart(){
-		 chrono.setStartWaveTime();
-		 System.out.println(chrono.startWaveTime);
+		 chronoLauncher.setStartTime();
+		 System.out.println(chronoLauncher.startTime);
 	 }
 	 
 	 public void runTimeEnd(){
-		 chrono.setEndWaveTime();
-		 System.out.println(chrono.endWaveTime);
+		 chronoLauncher.setEndTime();
+		 System.out.println(chronoLauncher.endTime);
 	 }
 	 
 	 public void runTimeDisplay(){
-		 String chronoTotal = chrono.getChrono();
-		 System.out.println(chronoTotal);
+		 String chrono = chronoLauncher.getChrono();
+		 System.out.println(chrono);
 	 }
 
 }
