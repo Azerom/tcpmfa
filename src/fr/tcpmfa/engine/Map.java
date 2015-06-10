@@ -44,6 +44,7 @@ public class Map {
 		this.game = game;
 		this.coordEnd = coordEnd;
 		this.coordStart = coordStart;
+		this.points = points;
 	}
 	
 	public Coordinate getCoordStart() {
@@ -64,6 +65,14 @@ public class Map {
 
 	public ArrayList<Tower> getTowers() {
 		return towers;
+	}
+	
+	public Point getStartPoint(){
+		for( Point e : points){
+			if(e.isEqual(coordStart))
+				return e;
+		}
+		return null;
 	}
 	
 }

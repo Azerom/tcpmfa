@@ -1,6 +1,5 @@
 package fr.tcpmfa.engine;
 
-import java.nio.channels.NonReadableChannelException;
 import java.sql.Time;
 import java.util.ArrayList;
 
