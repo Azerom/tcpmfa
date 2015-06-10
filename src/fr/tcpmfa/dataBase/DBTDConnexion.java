@@ -54,6 +54,18 @@ public class DBTDConnexion {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	private static Point findPoint(ArrayList<Point> liste,Coordinate chekP){
+		for(Point e:liste){
+			if(e.isEqual(chekP)){
+				return e;
+			}
+			return null;
+		}
+		return null;
+	}
+	
 	public void getMap(int ID_Map){
 		ResultSet info = null;
 		Coordinate startPoint;
@@ -63,18 +75,26 @@ public class DBTDConnexion {
 
 		try {
 			info = statement.executeQuery("SELECT * FROM map WHERE N_Map="+ID_Map);
-
 			info.first();
 			startPoint=new Coordinate(info.getInt(2), info.getInt(3));
 			endPoint = new Coordinate(info.getInt(4), info.getInt(5));
 
+			
 			info = statement.executeQuery("SELECT * FROM point WHERE N_Map="+ID_Map);
-
 			liste=new ArrayList<Point> ();
 			while(info.next()){
 				Point point = new Point(info.getInt(2), info.getInt(3));
 				liste.add(point);
 			}
+			
+			
+			/*info = statement.executeQuery("SELECT * FROM contain");
+			while(info.next()){
+				
+				Point P1= findPoint(liste, chekP);
+			}*/
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
