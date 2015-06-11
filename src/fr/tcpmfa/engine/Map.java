@@ -33,6 +33,8 @@ public class Map {
 	 */
 	private ArrayList<Tower> towers;
 	
+	private static int ID_Map;
+	
 	/**
 	 * Constructeur complet de la map
 	 * @param game : Partie lié
@@ -45,13 +47,14 @@ public class Map {
 		this.coordEnd = coordEnd;
 		this.coordStart = coordStart;
 		this.points = points;
+		this.ID_Map=1;
 
 //		this.towers= towers;
 
 		
 		//Test code remove ASAP
 		this.towers = new ArrayList<Tower>();
-		this.towers.add(new Tower(1, null, "Tour", new Coordinate(80, 80), game));
+		this.towers.add(new Tower(1, null, "Tour", new Coordinate(80, 80), game,0,80,0,0));
 	}
 	
 	public Coordinate getCoordStart() {
@@ -72,6 +75,10 @@ public class Map {
 
 	public ArrayList<Tower> getTowers() {
 		return towers;
+	}
+	
+	public int getID_Map(){
+		return ID_Map;
 	}
 	
 	public Point getStartPoint(){
