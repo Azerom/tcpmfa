@@ -8,11 +8,12 @@ public class Tower extends Element {
 	private int level;
 	private int range = 50;
 	
-	public Tower(int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game){
+	public Tower(int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game,int level){
 		super(coord, nmdDamage, typeDamage, name, game);
 		this.cost = 0;
 		this.damageType = null;
 		this.setImage("Images/Tour_3.png");
+		this.level=level;
 	}
 
 	@Override
@@ -38,5 +39,9 @@ public class Tower extends Element {
 			}
 		}
 		
+	}
+	
+	public int getlevel(){
+		return level;
 	}
 }

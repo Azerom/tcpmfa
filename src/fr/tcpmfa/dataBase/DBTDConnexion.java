@@ -134,7 +134,7 @@ public class DBTDConnexion {
 			info = statement.executeQuery("SELECT * FROM TowerEmplacement WHERE N_Map="+ID_Map);
 			tower = new ArrayList<Tower> ();
 			while(info.next()){
-				Tower emplacement= new Tower(0,null,null, new Coordinate(info.getInt(2),info.getInt(3)),null);
+				Tower emplacement= new Tower(0,null,null, new Coordinate(info.getInt(2),info.getInt(3)),null,0);
 				tower.add(emplacement);
 			}
 			
@@ -188,14 +188,17 @@ public class DBTDConnexion {
 		int ressource = 0;
 		int wave = 0;
 		int score = 0;
-		int N_Map= 1;
-		int SaveNumber=0;
+		int N_Map= 0;
+		int saveNumber=0;
+		
+		
 		
 		hp=game.getHp();
 		ressource=game.getRessource();
 		wave = WaveEnnemy.getCount();
-		score=0 ;
-		N_Map = 1;
+		score=0;
+		N_Map = game.getMap().getID_Map();
+		saveNumber=0;
 		
 		try {
 			info = statement.executeQuery("INSERT INTO `save`(`SaveNumber`, `Ressources`, `TimeSpend`, `BaseHp`, `Wave`, `N_Map`) "
@@ -212,6 +215,8 @@ public class DBTDConnexion {
 						+"','"
 						+N_Map
 						+"')");
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
