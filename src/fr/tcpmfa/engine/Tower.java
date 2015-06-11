@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.util.Coordinate;
 
 public class Tower extends Element {
@@ -141,6 +142,13 @@ public class Tower extends Element {
 	
 	public void levelUp(){
 		level++;
+		DBTDConnexion bdd = new DBTDConnexion();
+		bdd.open();
+		Tower temp = bdd.getTower(level, typeDamage, game);
+		this.setCooldown(temp.getCooldown());
+		this.setRange(temp.getRange());
+		this.setName(temp.getName());
+		this.setNmbDamage(temp.getNmbDamage());
 	}
 	
 	@Override

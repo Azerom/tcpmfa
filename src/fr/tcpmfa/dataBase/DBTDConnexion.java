@@ -128,7 +128,7 @@ public class DBTDConnexion {
 			info = statement.executeQuery("SELECT * FROM TowerEmplacement WHERE N_Map="+ID_Map);
 			tower = new ArrayList<Tower> ();
 			while(info.next()){
-				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,80,0,10,0);
+				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,30,0,10,0);
 				tower.add(emplacement);
 			}
 			
@@ -257,8 +257,6 @@ public class DBTDConnexion {
 	public Tower getTower(int level, Type type, Game game){
 		ResultSet info = null;
 		
-		String DommageType;
-		int HP = 0;
 		int numberDamage = 0;
 		int cooldown=0;
 		int range = 0;
@@ -266,13 +264,10 @@ public class DBTDConnexion {
 		int id_Tower = 0;
 
 		try {
-			info = statement.executeQuery("SELECT * FROM Tower WHERE Level="+level + "AND DammageType = "
-					+ type );
+			info = statement.executeQuery("SELECT * FROM Tower WHERE Level="+level + " AND DamageType = \""
+					+ type.toString() + "\"");
 			info.first();
 			id_Tower=info.getInt(1);
-			level =info.getInt(2);
-			DommageType=info.getString(3);
-			HP = info.getInt(4);
 			numberDamage=info.getInt(5);
 			cooldown=info.getInt(6);
 			range=info.getInt(7);
@@ -282,7 +277,8 @@ public class DBTDConnexion {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown, id_Tower);
+		return new Tower(numberDamage, type, type.toString() + Integer.toString(level), 
+				null ,game, level,range,cost,cooldown, id_Tower);
 	}
 
 }

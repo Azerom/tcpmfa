@@ -22,6 +22,10 @@ public abstract class Element implements GraphicalElement{
 	protected int wait;
 	protected BufferedImage image;
 	
+	public void setNmbDamage(int nmbDamage) {
+		this.nmbDamage = nmbDamage;
+	}
+
 	public Element(Coordinate coord, int nmdDamage, Type typeDamage, String name, Game game){
 		this.coord = coord;
 		this.nmbDamage = nmdDamage;
