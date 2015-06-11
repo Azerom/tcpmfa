@@ -1,17 +1,16 @@
 package fr.tcpmfa.display;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-import fr.tcpmfa.engine.Ennemy;
 import fr.tcpmfa.util.Coordinate;
 
 public class Display extends JFrame {
@@ -29,7 +28,12 @@ public class Display extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.panel = new MapPanel();
-		this.setContentPane(this.panel);
+		this.panel.setSize(new Dimension(400, 600));
+		JPanel p2 = new JPanel();
+		p2.setSize(200, 600);
+		
+		this.add(this.panel);
+		this.add(p2);
 		this.setBackground(Color.black);
 		this.elements = elements;
 		this.setVisible(true);
@@ -93,16 +97,19 @@ public class Display extends JFrame {
 		this.panel.repaint();
 	}
 	
+	/**
+	 * Empty the buffered image
+	 */
 	private void empty() {
-		this.image = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_RGB);
+		this.image = new BufferedImage(this.panel.getWidth(), this.panel.getHeight(), BufferedImage.TYPE_INT_RGB);
 		Graphics g = this.image.getGraphics();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 	
 	public void drawGraphicalElement(final GraphicalElement gElement, final Graphics g) {
-		int xP = gElement.getCoord().getX() - 15;
-		int yP = gElement.getCoord().getY() - 15;
+		int xP = calcX(gElement.getCoord().getX()) - 15;
+		int yP = calcY(gElement.getCoord().getY()) - 15;
 		g.drawImage(gElement.getImage(), xP, yP, 30, 30,  null);
 		
 //		g.setColor(Color.red);
@@ -119,14 +126,14 @@ public class Display extends JFrame {
 		}
 	}
 	
-//	private int calcX(float x){
-//		return (int)Math.ceil(this.getContentPane().getWidth()*(x/this.map.getWidth()));
-//		
-//	}
-//	
-//	private int calcY(float y){
-//		return (int)Math.ceil(this.getContentPane().getWidth()*(y/this.map.getHeight()));
-//	}
+	private int calcX(float x){
+		return (int)Math.ceil(this.panel.getWidth()*(x/1000));
+		
+	}
+	
+	private int calcY(float y){
+		return (int)Math.ceil(this.panel.getWidth()*(y/1000));
+	}
 	
 }
 
