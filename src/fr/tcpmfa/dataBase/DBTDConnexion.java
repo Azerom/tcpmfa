@@ -203,7 +203,7 @@ public class DBTDConnexion {
 		try {
 			info = statement.executeQuery("INSERT INTO `save`(`SaveNumber`, `Ressources`, `TimeSpend`, `BaseHp`, `Wave`, `N_Map`) "
 						+ "VALUES ('"
-						+ SaveNumber
+						+ saveNumber
 						+"','"
 						+ ressource
 						+ "','"
