@@ -57,57 +57,37 @@ public class Launcher extends JDialog {
 		  panWel.add(icon1);
 		  //
 		  
-		  //Debug ===================================================================================================================================================
-		  JPanel panDebug = new JPanel();
-		  panWel.setBorder(BorderFactory.createTitledBorder("Debug (A effacer par la suite)"));
-		  
-		  JButton startTemps = new JButton("Démarrage du temps");
-		  startTemps.addActionListener(new ActionListener(){
-			  public void actionPerformed(ActionEvent arg0) {
-					System.out.println("Démarrage du temps en cours ..");
-					runTimeStart();
-					
-				}
-			});
-		  JButton endTemps = new JButton("Fin du temps");
-		  endTemps.addActionListener(new ActionListener(){
-			  public void actionPerformed(ActionEvent arg0) {
-					System.out.println("Fin du temps en cours ..");
-					runTimeEnd();
-				}
-			});
-		  JButton affichageTemps = new JButton("Affichage du temps");
-		  affichageTemps.addActionListener(new ActionListener(){
-			  public void actionPerformed(ActionEvent arg0) {
-					System.out.println("Affichage du temps en cours...");
-					runTimeDisplay();
-				}
-			});
-		  	
-		  panDebug.add(startTemps);
-		  panDebug.add(endTemps);
-		  panDebug.add(affichageTemps);
-		  //==============================================================================================================================================================
-		  
 		  //========
 		  //Settings
 		  //========
 		  JPanel panSet = new JPanel();
-		  panSet.setBackground(Color.RED);
 		  panSet.setPreferredSize(new Dimension(200, 20));
-		  panSet.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+		  panSet.setBorder(BorderFactory.createTitledBorder("Settings"));
 		  //Settings - Pseudo
 		  	JPanel panSetPseudo = new JPanel();
 		  	JTextField pseudo = new JTextField();
-		    pseudo.setPreferredSize(new Dimension(100, 25));
-		    JLabel pseudoLabel = new JLabel("Pseudo :");
-		    panSetPseudo.add(pseudoLabel);
+		    pseudo.setPreferredSize(new Dimension(300, 25));
+		    panSetPseudo.setBorder(BorderFactory.createTitledBorder("Entrez votre pseudo :"));
 		    panSetPseudo.add(pseudo);
 		  //
 		  	panSet.add(panSetPseudo);
+			  //Settings - ChoixMap
+		  	JPanel panSetMap = new JPanel();
+		  	panSetMap.setPreferredSize(new Dimension(300, 60));
+		  	panSetMap.setBorder(BorderFactory.createTitledBorder("Choix de la Map"));
+		  	JComboBox<Integer> id_Map = new JComboBox<Integer>();
+		  	id_Map.addItem(1);
+		  	id_Map.addItem(2);
+		  	id_Map.addItem(3);
+		  	JLabel mapLabel = new JLabel("Map : ");
+		  	
+		  	panSetMap.add(mapLabel);
+		  	panSetMap.add(id_Map);
+		  //
+		  	panSet.add(panSetMap);
 		  //Settings - Option HP
 		  	JPanel panSetHP = new JPanel();
-		  	panSetHP.setPreferredSize(new Dimension(200, 60));
+		  	panSetHP.setPreferredSize(new Dimension(300, 60));
 		  	panSetHP.setBorder(BorderFactory.createTitledBorder("Nombre de points de vie :"));
 		  	JComboBox<Integer> HP = new JComboBox<Integer>();
 		  	HP.addItem(10);
@@ -127,7 +107,7 @@ public class Launcher extends JDialog {
 		  	panSet.add(panSetHP);
 		  //Settings - Ressources
 		  	JPanel panSetRessources = new JPanel();
-		  	panSetRessources.setPreferredSize(new Dimension(200, 60));
+		  	panSetRessources.setPreferredSize(new Dimension(300, 60));
 		  	panSetRessources.setBorder(BorderFactory.createTitledBorder("Nombre de points de ressources :"));
 		  	JComboBox<Integer> Ressources = new JComboBox<Integer>();
 		  	Ressources.addItem(10);
@@ -145,21 +125,9 @@ public class Launcher extends JDialog {
 		  	panSetRessources.add(Ressources);
 		  //
 		  	panSet.add(panSetRessources);
-			  //Settings - ChoixMap
-		  	JPanel panSetMap = new JPanel();
-		  	panSetMap.setPreferredSize(new Dimension(200, 60));
-		  	panSetMap.setBorder(BorderFactory.createTitledBorder("Choix de la Map"));
-		  	JComboBox<Integer> id_Map = new JComboBox<Integer>();
-		  	id_Map.addItem(1);
-		  	id_Map.addItem(2);
-		  	id_Map.addItem(3);
-		  	JLabel mapLabel = new JLabel("Map : ");
-		  	
-		  	panSetMap.add(mapLabel);
-		  	panSetMap.add(id_Map);
-		  //
-		  	panSet.add(panSetMap);
-		  //============
+
+
+		  //============================FIN SETTINGS=========================================================
 		  	
 		  	
 		  //New-LoadGame
@@ -203,7 +171,6 @@ public class Launcher extends JDialog {
 		  this.getContentPane().add(panWel, BorderLayout.NORTH);
 		  this.getContentPane().add(panSet, BorderLayout.CENTER);
 		  this.getContentPane().add(panNLG, BorderLayout.SOUTH);
-		  this.getContentPane().add(panDebug, BorderLayout.EAST);
 		  //
 	  }
 	  
@@ -223,3 +190,37 @@ public class Launcher extends JDialog {
 	 }
 
 }
+
+
+
+////Debug ===================================================================================================================================================
+//JPanel panDebug = new JPanel();
+//panWel.setBorder(BorderFactory.createTitledBorder("Debug (A effacer par la suite)"));
+//
+//JButton startTemps = new JButton("Démarrage du temps");
+//startTemps.addActionListener(new ActionListener(){
+//	  public void actionPerformed(ActionEvent arg0) {
+//			System.out.println("Démarrage du temps en cours ..");
+//			runTimeStart();
+//			
+//		}
+//	});
+//JButton endTemps = new JButton("Fin du temps");
+//endTemps.addActionListener(new ActionListener(){
+//	  public void actionPerformed(ActionEvent arg0) {
+//			System.out.println("Fin du temps en cours ..");
+//			runTimeEnd();
+//		}
+//	});
+//JButton affichageTemps = new JButton("Affichage du temps");
+//affichageTemps.addActionListener(new ActionListener(){
+//	  public void actionPerformed(ActionEvent arg0) {
+//			System.out.println("Affichage du temps en cours...");
+//			runTimeDisplay();
+//		}
+//	});
+//	
+//panDebug.add(startTemps);
+//panDebug.add(endTemps);
+//panDebug.add(affichageTemps);
+////==============================================================================================================================================================
