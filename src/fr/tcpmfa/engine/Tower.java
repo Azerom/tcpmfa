@@ -24,7 +24,7 @@ public class Tower extends Element {
 		this.cost = cost;
 		this.range=range;
 		this.damageType = null;
-		this.setImage("Images/Tour_3.png");
+		this.setImage("Tour_3.png");
 		this.level=level;
 		this.cooldown=cooldown;
 		this.countDown = cooldown;
@@ -99,7 +99,7 @@ public class Tower extends Element {
 	}
 	
 	public void levelUp(){
-		
+		level++;
 	}
 	
 	@Override
@@ -120,7 +120,9 @@ public class Tower extends Element {
 			g.clearRect(0, 0, image.getWidth(), image.getHeight());
 			g2d.setComposite(original);
 			}
-		image.getGraphics().drawImage(this.image, (range/2)-15, (range/2)-15, 30, 30, null);
+		g.drawImage(this.image, (range/2)-15, (range/2)-15, 30, 30, null);
+		g.setColor(Color.white);
+		g.drawString(Integer.toString(level), 20, 20);
 		
 		
 		if(focus != null){

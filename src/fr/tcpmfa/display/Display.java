@@ -6,11 +6,16 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import fr.tcpmfa.engine.Tower;
 import fr.tcpmfa.util.Coordinate;
 
 public class Display extends JFrame {
@@ -24,16 +29,17 @@ public class Display extends JFrame {
 	
 	public Display(String titre, ArrayList<GraphicalElement> elements){
 		super(titre);
-		this.setSize(900, 900);
+		this.setSize(1000, 600);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.panel = new MapPanel();
-		this.panel.setSize(new Dimension(700, 900));
+		this.panel.setSize(new Dimension(800, 600));
 		JPanel p2 = new JPanel();
-		p2.setSize(200, 900);
+		p2.setSize(200, 600);
 		
 		this.add(this.panel);
 		this.add(p2);
+		
 		this.setBackground(Color.black);
 		this.elements = elements;
 		this.setVisible(true);
@@ -66,7 +72,7 @@ public class Display extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Coordinate coord = new Coordinate(arg0.getX(), arg0.getY());
-				System.out.println(arg0);
+				
 				for(GraphicalElement e : elements){
 
 					int tX = e.getCoord().getX();
@@ -81,11 +87,12 @@ public class Display extends JFrame {
 					if((dX <= 30) && 
 							(dY <= 30)){
 						
-							e.setImage("Images/FortiGuard.png");
+							if(e instanceof Tower){
+								((Tower) e).levelUp();
+							}
 
 						
 					}
-					break;
 				}
 			}
 		});
@@ -97,6 +104,10 @@ public class Display extends JFrame {
 		this.panel.repaint();
 	}
 	
+	public JFrame getThis(){
+		return this;
+	}
+	
 	/**
 	 * Empty the buffered image
 	 */
@@ -105,6 +116,14 @@ public class Display extends JFrame {
 		Graphics g = this.image.getGraphics();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		//Test code
+
+		try {
+			g.drawImage(ImageIO.read(new File("Images/Map1F.png")), 0, 0, 800, 600, null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void drawGraphicalElement(final GraphicalElement gElement, final Graphics g) {
@@ -127,12 +146,12 @@ public class Display extends JFrame {
 	}
 	
 	private int calcX(float x){
-		return (int)Math.ceil(this.panel.getWidth()*(x/1000));
+		return (int)Math.ceil(this.panel.getWidth()*(x/800));
 		
 	}
 	
 	private int calcY(float y){
-		return (int)Math.ceil(this.panel.getWidth()*(y/1000));
+		return (int)Math.ceil(this.panel.getHeight()*(y/600));
 	}
 	
 }
