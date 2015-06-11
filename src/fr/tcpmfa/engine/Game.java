@@ -6,6 +6,7 @@ import java.util.Iterator;
 import fr.tcpmfa.display.Display;
 import fr.tcpmfa.display.GraphicalElement;
 import fr.tcpmfa.dataBase.DBTDConnexion;
+import fr.tcpmfa.util.Time;
 
 /**
  * Represent a game of tower defense, contain all information like hp or ressources
@@ -53,12 +54,23 @@ public class Game {
 
 		this.display = new Display("Test", this.graphicalList);
 		this.map = bdd.getMap(1, this);
-
+		Time gameTime = new Time();
 		bdd.close();
 
-		actualWave = new WaveEnnemy(this, map.getStartPoint());
 		//		Ennemy ennemy = new Ennemy(0, null, 15, 20, new CheckPoint(Direction.NORTH, map.), 5, null, "Test Guy", new Coordinate(0,0), this);
 		//		actualWave.add(ennemy);
+		startWave(gameTime);
+	}
+
+	public void startWave(Time gameTime){
+		actualWave = new WaveEnnemy(this, map.getStartPoint());
+		gameTime.setStartTime();
+	}
+	
+	public void endWave(Time gameTime){
+		gameTime.setEndTime();
+		gameTime.getChrono();
+		System.out.println(gameTime.chronoTotal);
 	}
 
 	public void deadTakeAct(Ennemy dead){
@@ -66,6 +78,7 @@ public class Game {
 		System.out.println(this.actualWave.size());
 		if(this.actualWave.size() == 1){
 			System.out.println("======================FIN DE VAGUE======================");
+			this.endWave(null);
 		}
 		else
 			System.out.println("La vague continue.");

@@ -4,7 +4,13 @@ public class Time {
 	
 	public long startTime;
 	public long endTime;
-	public long chrono;
+	public int chronoTotal;
+	
+	public Time(){
+		startTime = 0;
+		endTime = 0;
+		chronoTotal = 0;
+	}
 	
 	public void setStartTime(){
 		this.startTime=	System.currentTimeMillis();
@@ -15,7 +21,7 @@ public class Time {
 	}
 	
 	public String getChrono(){
-		int chronoTotal = (int)(endTime-startTime)/1000;
+		chronoTotal += ((int)(endTime-startTime)/1000);
 		
 		return ("Minutes : "+chronoTotal/60+" "+"Secondes : "+chronoTotal%60);
 	}
