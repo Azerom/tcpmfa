@@ -61,6 +61,9 @@ public class Game {
 		//		actualWave.add(ennemy);
 		startWave(gameTime);
 	}
+	public Game(int hp,int ressource,int wave, Map map){
+		
+	}
 
 	public void startWave(Time gameTime){
 		actualWave = new WaveEnnemy(this, map.getStartPoint());

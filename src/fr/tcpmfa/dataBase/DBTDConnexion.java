@@ -43,7 +43,9 @@ public class DBTDConnexion {
 
 		return true;
 	}
-
+/**
+ * Déconnection de la BDD
+ */
 	public void close(){
 		try {
 			this.connection.close();
@@ -53,7 +55,13 @@ public class DBTDConnexion {
 		}
 	}
 	
-	
+	/**
+	 * Permet de lier les différents points entres eux 
+	 * afin de les fair correspondre au chemin 
+	 * @param liste
+	 * @param chekP
+	 * @return
+	 */
 	private static Point findPoint(ArrayList<Point> liste,Coordinate chekP){
 		for(Point e:liste){
 			if(e.isEqual(chekP)){
@@ -62,7 +70,12 @@ public class DBTDConnexion {
 		}
 		return null;
 	}
-	
+	/**
+	 * Permet de réupérer les données lier a la Map
+	 * @param ID_Map
+	 * @param game
+	 * @return
+	 */
 	public Map getMap(int ID_Map, Game game){
 		ResultSet info = null;
 		Coordinate startPoint = null;
@@ -216,12 +229,47 @@ public class DBTDConnexion {
 		}
 		
 	}
-	
-	public void getSave( ){
+	/**
+	 * méthode permétant de récuperer une saugarde dans la BDD
+	 * @param nbSave
+	 * @return 
+	 */
+	public Game getSave(int nbSave){
+		ResultSet info =null ;
+		int hp=0;
+		int ressource = 0;
+		int wave = 0;
+		int score = 0;
+		int N_Map= 0;
+		int saveNumber;
+		
+		try {
+			info= statement.executeQuery("SELECT * FROM `save` WHERE SaveNumber="+nbSave);
+			info.first();
+			hp = info.getInt(4);
+			ressource=info.getInt(2);
+			score=info.getInt(3);
+			wave=info.getInt(5);
+			N_Map=info.getInt(6);
+			
+			info=statement.executeQuery("SELECT * FROM Towersave WHERE SaveNumber="+nbSave);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
+		return new Game(hp,ressource,wave);
 	}
-	
+	/**
+	 * Permet de récuperer les données des tours contenu
+	 * dans la base de donnée
+	 * @param ID_Tower
+	 * @param game
+	 * @return
+	 */
 	public Tower getTower(int ID_Tower,Game game){
 		
 		ResultSet info = null;
@@ -255,3 +303,4 @@ public class DBTDConnexion {
 	}
 
 }
+
