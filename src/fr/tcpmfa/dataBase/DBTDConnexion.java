@@ -253,5 +253,36 @@ public class DBTDConnexion {
 		}
 		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown,id_Tower);
 	}
+	
+	public Tower getTower(int level, Type type, Game game){
+		ResultSet info = null;
+		
+		String DommageType;
+		int HP = 0;
+		int numberDamage = 0;
+		int cooldown=0;
+		int range = 0;
+		int cost = 0;
+		int id_Tower = 0;
+
+		try {
+			info = statement.executeQuery("SELECT * FROM Tower WHERE Level="+level + "AND DammageType = "
+					+ type );
+			info.first();
+			id_Tower=info.getInt(1);
+			level =info.getInt(2);
+			DommageType=info.getString(3);
+			HP = info.getInt(4);
+			numberDamage=info.getInt(5);
+			cooldown=info.getInt(6);
+			range=info.getInt(7);
+			cost=info.getInt(8);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown);
+	}
 
 }

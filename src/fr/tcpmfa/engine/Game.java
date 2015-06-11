@@ -25,6 +25,8 @@ public class Game {
 	private ArrayList<Ennemy> dead;
 	
 	private ArrayList<GraphicalElement> graphicalList;
+	
+	private Time time;
 
 	//	/**
 	//	 * Default constructeur</br>
@@ -44,6 +46,9 @@ public class Game {
 
 	//Test code around here, remove ASAP
 	public Game(int hp, int ressource, int id_Map){
+		
+		this.time = new Time();
+		
 		dead = new ArrayList<Ennemy>();
 		DBTDConnexion bdd =new DBTDConnexion();
 		bdd.open();
@@ -54,23 +59,25 @@ public class Game {
 
 		this.display = new Display("Test", this.graphicalList);
 		this.map = bdd.getMap(1, this);
-		Time gameTime = new Time();
+
 		bdd.close();
 
 		//		Ennemy ennemy = new Ennemy(0, null, 15, 20, new CheckPoint(Direction.NORTH, map.), 5, null, "Test Guy", new Coordinate(0,0), this);
 		//		actualWave.add(ennemy);
-		startWave(gameTime);
+		startWave();
 	}
 
-	public void startWave(Time gameTime){
+	public void startWave(){
 		actualWave = new WaveEnnemy(this, map.getStartPoint());
-		gameTime.setStartTime();
+		this.time.setStartTime();
 	}
 	
-	public void endWave(Time gameTime){
-		gameTime.setEndTime();
-		gameTime.getChrono();
-		System.out.println(gameTime.chronoTotal);
+	public void endWave(){
+		time.setEndTime();
+		
+		System.out.println(time.getChrono());
+		
+		startWave();
 	}
 
 	public void deadTakeAct(Ennemy dead){
@@ -78,7 +85,7 @@ public class Game {
 		System.out.println(this.actualWave.size());
 		if(this.actualWave.size() == 1){
 			System.out.println("======================FIN DE VAGUE======================");
-			this.endWave(null);
+			this.endWave();
 		}
 		else
 			System.out.println("La vague continue.");
@@ -133,6 +140,12 @@ public class Game {
 
 	public WaveEnnemy getActualWave(){
 		return this.actualWave;
+	}
+	
+	public void reactToActionOn(GraphicalElement e){
+		if(e instanceof Tower){
+			
+		}
 	}
 }
 
