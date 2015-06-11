@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import fr.tcpmfa.dataBase.DBTDConnexion;
+import fr.tcpmfa.sound.Sound;
 import fr.tcpmfa.util.Coordinate;
 
 /**
@@ -84,6 +85,7 @@ public class Ennemy extends Element {
 	public void die(){
 		game.deadTakeAct(this);
 		System.out.println(this.name + " die");
+
 	}
 
 	@Override
@@ -136,6 +138,7 @@ public class Ennemy extends Element {
 		if(hp <= 0){
 			game.setRessource(game.getRessource() + this.loot);
 			this.die();
+			new Sound("Sounds/EnnemyDead.wav");
 		}
 	}
 	
