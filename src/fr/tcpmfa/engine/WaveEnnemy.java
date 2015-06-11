@@ -67,4 +67,8 @@ public class WaveEnnemy extends ArrayList<Ennemy> {
 		}
 	}
 
+	public static int getNbrennemy() {
+		return NBRENNEMY;
+	}
+
 }

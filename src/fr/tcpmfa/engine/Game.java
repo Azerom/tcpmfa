@@ -63,7 +63,14 @@ public class Game {
 
 	public void deadTakeAct(Ennemy dead){
 		this.dead.add(dead);
-	}
+		System.out.println(this.actualWave.size());
+		if(this.actualWave.size() == 1){
+			System.out.println("======================FIN DE VAGUE======================");
+		}
+		else
+			System.out.println("La vague continue.");
+		}
+	
 	public void turn(){
 		this.graphicalList.clear();
 		this.graphicalList.addAll(actualWave);

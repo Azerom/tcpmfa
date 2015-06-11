@@ -18,10 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import fr.tcpmfa.Main;
-//PROVISOIRE DEBUG
-import fr.tcpmfa.util.Time;
-
-
 
 public class Launcher extends JDialog {
 
