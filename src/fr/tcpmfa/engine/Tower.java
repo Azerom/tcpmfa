@@ -19,7 +19,7 @@ public class Tower extends Element {
 	private int cooldown;
 	private int countDown;
 	private Ennemy focus;
-	private static int id_Tower;
+	private int id_Tower;
 
 	public Tower(int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game,int level,int range,int cost,int cooldown,int id_Tower){
 		super(coord, nmdDamage, typeDamage, name, game);
@@ -50,14 +50,6 @@ public class Tower extends Element {
 		this.cooldown = cooldown;
 	}
 
-	public int getCountDown() {
-		return countDown;
-	}
-
-	public void setCountDown(int countDown) {
-		this.countDown = countDown;
-	}
-
 	public int getCost() {
 		return cost;
 	}
@@ -70,8 +62,8 @@ public class Tower extends Element {
 		this.level = level;
 	}
 
-	public static void setId_Tower(int id_Tower) {
-		Tower.id_Tower = id_Tower;
+	public void setId_Tower(int id_Tower) {
+		this.id_Tower = id_Tower;
 	}
 
 	@Override
@@ -120,7 +112,7 @@ public class Tower extends Element {
 		return false;
 	}
 	
-	public static int getId_Tower(){
+	public int getId_Tower(){
 		return id_Tower;
 	}
 

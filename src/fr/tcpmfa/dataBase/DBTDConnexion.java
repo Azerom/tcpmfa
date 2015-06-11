@@ -202,7 +202,6 @@ public class DBTDConnexion {
 		int pointY=0;
 		
 		
-		id_Tower=Tower.getId_Tower();
 		hp=game.getHp();
 		ressource=game.getRessource();
 		wave = WaveEnnemy.getCount();

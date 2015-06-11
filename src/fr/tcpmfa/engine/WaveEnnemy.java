@@ -7,6 +7,11 @@ import java.util.Iterator;
 import fr.tcpmfa.util.Coordinate;
 import fr.tcpmfa.util.Time;
 
+/**
+ * Represent an annemye 
+ * @author Azerom
+ *
+ */
 public class WaveEnnemy extends ArrayList<Ennemy> {
 
 	private static final long serialVersionUID = 3391625254887809314L;

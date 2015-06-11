@@ -58,7 +58,7 @@ public class Game {
 		this.ressource = ressource;
 
 		this.display = new Display("Test", this.graphicalList);
-		this.map = bdd.getMap(1, this);
+		this.map = bdd.getMap(id_Map, this);
 
 		bdd.close();
 
@@ -70,11 +70,17 @@ public class Game {
 		
 	}
 
+	/**
+	 * Launch a new wave
+	 */
 	public void startWave(){
 		actualWave = new WaveEnnemy(this, map.getStartPoint());
 		this.time.setStartTime();
 	}
 	
+	/**
+	 * Put the actual wave to end
+	 */
 	public void endWave(){
 		time.setEndTime();
 		
@@ -83,6 +89,12 @@ public class Game {
 		startWave();
 	}
 
+	/**
+	 * Signal an ennemy as dead
+	 * </br>We cannot remove an ennemy during a turn, </br>
+	 * He will be remove as soon as the turn is over
+	 * @param dead : Ennemy
+	 */
 	public void deadTakeAct(Ennemy dead){
 		this.dead.add(dead);
 		System.out.println(this.actualWave.size());
@@ -94,6 +106,9 @@ public class Game {
 			System.out.println("La vague continue.");
 		}
 	
+	/**
+	 * Launch a turn
+	 */
 	public void turn(){
 		this.graphicalList.clear();
 		this.graphicalList.addAll(actualWave);
@@ -145,10 +160,5 @@ public class Game {
 		return this.actualWave;
 	}
 	
-	public void reactToActionOn(GraphicalElement e){
-		if(e instanceof Tower){
-			
-		}
-	}
 }
 

@@ -36,7 +36,7 @@ public class Main {
 	
 	public static void launch(){
 		
-		launch("inconnu", 15, 15, 1);
+		launch("inconnu", 15, 15, 2);
 
 	}
 	
