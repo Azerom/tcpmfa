@@ -128,7 +128,7 @@ public class DBTDConnexion {
 			info = statement.executeQuery("SELECT * FROM TowerEmplacement WHERE N_Map="+ID_Map);
 			tower = new ArrayList<Tower> ();
 			while(info.next()){
-				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,80,0,10);
+				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,80,0,10,0);
 				tower.add(emplacement);
 			}
 			
