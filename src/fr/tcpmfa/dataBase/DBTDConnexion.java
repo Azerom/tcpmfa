@@ -128,7 +128,7 @@ public class DBTDConnexion {
 			info = statement.executeQuery("SELECT * FROM TowerEmplacement WHERE N_Map="+ID_Map);
 			tower = new ArrayList<Tower> ();
 			while(info.next()){
-				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,80,0,10);
+				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,80,0,10,0);
 				tower.add(emplacement);
 			}
 			
@@ -183,21 +183,32 @@ public class DBTDConnexion {
 		int wave = 0;
 		int score = 0;
 		int N_Map= 0;
-		int saveNumber=0;
+		int saveNumber;
+		int id_Tower= 0;
+		int pointX=0;
+		int pointY=0;
 		
 		
-		
+		id_Tower=Tower.getId_Tower();
 		hp=game.getHp();
 		ressource=game.getRessource();
 		wave = WaveEnnemy.getCount();
 		score=0;
 		N_Map = game.getMap().getID_Map();
-		saveNumber=0;
-		
 		try {
-			info = statement.executeQuery("INSERT INTO `save`(`SaveNumber`, `Ressources`, `TimeSpend`, `BaseHp`, `Wave`, `N_Map`) "
-						+ "VALUES ('"+ saveNumber+"','"+ ressource+ "','"+ score+"','"+hp+"','"+wave+"','"+N_Map+"')");
+			int nbSave = statement.executeUpdate("INSERT INTO `save`(`SaveNumber`, `Ressources`, `TimeSpend`, `BaseHp`, `Wave`, `N_Map`) "
+						+ "VALUES ('','"+ ressource+ "','"+ score+"','"+hp+"','"+wave+"','"+N_Map+"')");
 			
+			
+			
+			
+			for(Tower e : game.getMap().getTowers()){
+				pointX=e.getCoord().getX();
+				pointY=e.getCoord().getY();
+				info=statement.executeQuery("INSERT INTO `towersave`(`IdTowerSave`, `XTower`, `YTower`, `SaveNumber`, `IdTower`) "
+					+ "VALUES ('','"+pointX+"','"+pointY+"','"+nbSave+"',"+id_Tower+")");
+
+			}		
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -240,7 +251,7 @@ public class DBTDConnexion {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown);
+		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown,id_Tower);
 	}
 
 }
