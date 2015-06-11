@@ -11,6 +11,7 @@ import fr.tcpmfa.engine.Ennemy;
 import fr.tcpmfa.engine.Game;
 import fr.tcpmfa.engine.Point;
 import fr.tcpmfa.engine.Tower;
+import fr.tcpmfa.engine.WaveEnnemy;
 import fr.tcpmfa.util.Coordinate;
 import fr.tcpmfa.util.Direction;
 
@@ -181,17 +182,40 @@ public class DBTDConnexion {
 	/**
 	 * méthode servant a sauvegarder
 	 */
-	public void save(){
+	public void save(Game game){
 		ResultSet info = null;
+		int hp=0;
+		int ressource = 0;
+		int wave = 0;
+		int score = 0;
+		int N_Map= 1;
+		int SaveNumber=0;
+		
+		hp=game.getHp();
+		ressource=game.getRessource();
+		wave = WaveEnnemy.getCount();
+		score=0 ;
+		N_Map = 1;
+		
 		try {
-			info = statement.executeQuery("INSERT INTO `save`(`SaveNumber`, `Ressources`, `TimeSpend`, `BaseHp`, `Wave`, `N_Map`) VALUES ()");
-			
-			
+			info = statement.executeQuery("INSERT INTO `save`(`SaveNumber`, `Ressources`, `TimeSpend`, `BaseHp`, `Wave`, `N_Map`) "
+						+ "VALUES ('"
+						+ SaveNumber
+						+"','"
+						+ ressource
+						+ "','"
+						+ score
+						+"','"
+						+hp
+						+"','"
+						+wave
+						+"','"
+						+N_Map
+						+"')");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 	}
 	
