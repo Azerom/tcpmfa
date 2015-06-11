@@ -282,7 +282,7 @@ public class DBTDConnexion {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown);
+		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown, id_Tower);
 	}
 
 }
