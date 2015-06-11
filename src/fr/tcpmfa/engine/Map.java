@@ -42,12 +42,12 @@ public class Map {
 	 * @param coordStart
 	 * @param points: Points de navigations
 	 */
-	public Map(Game game, Coordinate coordEnd, Coordinate coordStart, ArrayList<Point> points, ArrayList<Tower> towers){
+	public Map(Game game, Coordinate coordEnd, Coordinate coordStart, ArrayList<Point> points, ArrayList<Tower> towers, int IdMap){
 		this.game = game;
 		this.coordEnd = coordEnd;
 		this.coordStart = coordStart;
 		this.points = points;
-		this.ID_Map=1;
+		this.ID_Map= IdMap;
 
 //		this.towers= towers;
 

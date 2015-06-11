@@ -57,7 +57,7 @@ public class Game {
 		this.hp = hp;
 		this.ressource = ressource;
 
-		this.display = new Display("Test", this.graphicalList);
+		this.display = new Display("Test", this.graphicalList, id_Map);
 		this.map = bdd.getMap(id_Map, this);
 
 		bdd.close();

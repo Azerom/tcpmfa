@@ -150,7 +150,7 @@ public class DBTDConnexion {
 			e.printStackTrace();
 		}
 		
-		return new Map(game, endPoint, startPoint, liste,tower);
+		return new Map(game, endPoint, startPoint, liste,tower, ID_Map);
 
 	}
 

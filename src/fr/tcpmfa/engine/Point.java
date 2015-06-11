@@ -5,6 +5,14 @@ import java.util.Random;
 
 import fr.tcpmfa.util.Coordinate;
 
+/**
+ * Represent a point used by the ennemy to navigate around the map,
+ * a point is caracterised by his coordinates. He also have a list of point you can acces
+ * from the actual point.
+ * @see CheckPoint
+ * @author Azerom
+ *
+ */
 public class Point extends Coordinate {
 	public Point(int x, int y) {
 		super(x, y);

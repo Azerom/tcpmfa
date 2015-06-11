@@ -30,8 +30,11 @@ public class Display extends JFrame {
 	private ArrayList<GraphicalElement> elements;
 	private TPanel interfacePanel;
 	
-	public Display(String titre, ArrayList<GraphicalElement> elements){
+	private int idMap;
+	
+	public Display(String titre, ArrayList<GraphicalElement> elements, int idMap){
 		super(titre);
+		this.idMap = idMap;
 		this.setSize(1000, 600);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -125,7 +128,7 @@ public class Display extends JFrame {
 		//Test code
 
 		try {
-			g.drawImage(ImageIO.read(new File("Images/Map1F.png")), 0, 0, 800, 600, null);
+			g.drawImage(ImageIO.read(new File("Images/Map" + idMap + "F.png")), 0, 0, 800, 600, null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

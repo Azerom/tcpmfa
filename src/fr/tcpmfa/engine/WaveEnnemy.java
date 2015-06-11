@@ -8,7 +8,10 @@ import fr.tcpmfa.util.Coordinate;
 import fr.tcpmfa.util.Time;
 
 /**
- * Represent an annemye 
+ * Represent an ennemy wave
+ * 
+ *  </br>
+ *  All the ennemy is first place in a resserve ArrayList, then they get place on the map once at a time
  * @author Azerom
  *
  */
@@ -53,6 +56,9 @@ public class WaveEnnemy extends ArrayList<Ennemy> {
 		return null;
 	}
 
+	/**
+	 * Put the wave to life
+	 */
 	public void act(){
 		System.out.println("-------------------\nNew turn\n-------------------------");
 
