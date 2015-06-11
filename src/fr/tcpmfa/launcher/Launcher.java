@@ -74,9 +74,41 @@ public class Launcher extends JDialog {
 		  	id_Map.addItem(2);
 		  	id_Map.addItem(3);
 		  	JLabel mapLabel = new JLabel("Map : ");
-		  	
+		  	//Voir Map TEST
+		  	JOptionPane seeMapPopUp = new JOptionPane();
+		  	JButton seeMapButton = new JButton("Voir Cartes");
+		  	seeMapButton.addActionListener(new ActionListener(){
+		  		public void actionPerformed(ActionEvent argo0) {
+
+		  		}
+		  	});
+
+//		    okBouton.addActionListener(new ActionListener(){
+//		        public void actionPerformed(ActionEvent arg0) {        
+//		          zInfo = new ZDialogInfo(nom.getText(), (String)sexe.getSelectedItem(), getAge(), (String)cheveux.getSelectedItem() ,getTaille());
+//		          setVisible(false);
+//		        }
+//===========================================================================================================================
+//		  	
+//		  	ZDialog zd = new ZDialog(null, "Coucou les ZérOs", true);
+//	        ZDialogInfo zInfo = zd.showZDialog(); 
+//	        JOptionPane jop = new JOptionPane();
+//	        jop.showMessageDialog(null, zInfo.toString(), "Informations personnage", JOptionPane.INFORMATION_MESSAGE);
+//===========================================================================================================================
+//			  JButton newGameButton = new JButton("Nouvelle Partie");
+//			  newGameButton.addActionListener(new ActionListener(){
+//				  public void actionPerformed(ActionEvent arg0) {
+//					  
+//					  System.out.println("Pseudo : "+pseudo.getText()+"\nNombre de Points de vie : "+HP.getSelectedItem()+"\nRessources : "+Ressources.getSelectedItem()+"\nN°Map :"+id_Map.getSelectedItem());
+//					  Main.launch(pseudo.getText(), (int)HP.getSelectedItem(), (int)Ressources.getSelectedItem(), (int)id_Map.getSelectedItem());
+//					  setVisible(false);
+//					  dispose();
+//				  }
+//			  });
+
 		  	panSetMap.add(mapLabel);
 		  	panSetMap.add(id_Map);
+		  	panSetMap.add(seeMapButton); 
 		  //
 		  	panSet.add(panSetMap);
 		  //Settings - Option HP
