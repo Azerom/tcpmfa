@@ -1,11 +1,14 @@
 package fr.tcpmfa.engine;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+
+import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.display.Display;
 import fr.tcpmfa.display.GraphicalElement;
-import fr.tcpmfa.dataBase.DBTDConnexion;
+import fr.tcpmfa.sound.Sound;
 import fr.tcpmfa.util.Time;
 
 /**
@@ -142,6 +145,8 @@ public class Game {
 	public void decreaseHp(int damage){
 		this.hp -= damage;
 		System.out.println("System : Lose " + damage + " hp, " + this.hp + " remaing");
+		new Sound("Sounds/BaseAttacked.wav");
+
 	}
 
 	public int getRessource() {
