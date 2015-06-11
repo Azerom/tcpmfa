@@ -186,8 +186,10 @@ public class Tower extends Element {
 	public ArrayList<String> getPossibleAction(){
 		ArrayList<String> list = new ArrayList<String>();
 		if(this.typeDamage == null){
-			list.add("nightmare");
-			list.add("light");
+			list.add("Nightmare");
+			list.add("Light");
+			list.add("Frost");
+			list.add("Fire");
 			return list;
 		}
 		else{
@@ -201,11 +203,17 @@ public class Tower extends Element {
 	@Override
 	public void reactToAction(String action){
 		switch(action){
-			case "light" :
+			case "Light" :
 				this.typeDamage = Type.Light;
 				break;
-			case "nightmare" :
+			case "Nightmare" :
 				this.typeDamage = Type.Nightmare;
+				break;
+			case "Frost" :
+				this.typeDamage = Type.Frost;
+				break;
+			case "Fire" :
+				this.typeDamage = Type.Fire;
 				break;
 			case "upgrade" :
 				this.levelUp();
