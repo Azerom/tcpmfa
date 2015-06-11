@@ -6,12 +6,13 @@ public class Tower extends Element {
 	private final int cost;
 	private final Type damageType;
 	private int level;
-	private int range = 5;
+	private int range = 50;
 	
 	public Tower(int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game){
 		super(coord, nmdDamage, typeDamage, name, game);
 		this.cost = 0;
 		this.damageType = null;
+		this.setImage("Images/Tour_3.png");
 	}
 
 	@Override

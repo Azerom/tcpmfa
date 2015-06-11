@@ -1,6 +1,14 @@
 package fr.tcpmfa.engine;
 
-import fr.tcpmfa.consoleGraphic.GraphicalElement;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import fr.tcpmfa.display.GraphicalElement;
 import fr.tcpmfa.util.Coordinate;
 
 public abstract class Element implements GraphicalElement{
@@ -11,6 +19,7 @@ public abstract class Element implements GraphicalElement{
 	protected String name;
 	protected Game game;
 	protected int wait;
+	protected BufferedImage image;
 	
 	public Element(Coordinate coord, int nmdDamage, Type typeDamage, String name, Game game){
 		this.coord = coord;
@@ -55,10 +64,15 @@ public abstract class Element implements GraphicalElement{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public char getImage(){
-		return 'X';
+	public BufferedImage getImage(){
+
+		return image;
 	}
-	public void setImage(char image){
-		
+	public void setImage(String image){
+	       try {                
+		          this.image =  ImageIO.read(new File(image));
+		        } catch (IOException ex) {
+		             // handle exception...
+		        }
 	}
 }

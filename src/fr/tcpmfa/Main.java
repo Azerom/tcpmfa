@@ -22,11 +22,16 @@ public class Main {
 
 		Game game = new Game(HP, ressources, id_Map);
 
+
+	}
+	
+	public static void launch(){
+		Game game = new Game(15, 20, 1);
+
 		for(int i = 0; i < 100; i++){
 			game.turn();
 			
 		}
-		
 	}
 	
 	public static void launch(int idSave){

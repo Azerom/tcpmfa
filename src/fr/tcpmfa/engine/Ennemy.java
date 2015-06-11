@@ -1,6 +1,13 @@
 package fr.tcpmfa.engine;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.util.Coordinate;
@@ -22,6 +29,7 @@ public class Ennemy extends Element {
 	private int moveSpeed;
 	private final Type resitance;
 	private final int loot;
+	private int maxHp;
 	private int hp;
 	
 	/**
@@ -52,7 +60,9 @@ public class Ennemy extends Element {
 		this.resitance = resistance;
 		this.loot = loot;
 		this.hp = hp;
+		this.maxHp = hp;
 		this.checkPoint = checkpoint;
+		this.setImage("Images/bluescreen.png");
 		
 		System.out.println("hello, i am " + this.name);
 	}
@@ -128,4 +138,25 @@ public class Ennemy extends Element {
 			this.die();
 		}
 	}
+	
+	@Override
+	public BufferedImage getImage(){
+		
+		Graphics g = this.image.getGraphics();
+		try {
+			g.drawImage(ImageIO.read(new File("Images/FortiGuard.png")), 0, 0, 100, 100,  null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		g.setColor(Color.red);
+		g.fillRect(0, 0, image.getWidth(), 100 );
+		
+		g.setColor(Color.green);
+		g.fillRect(0, 0, Math.round( ( (float)hp / (float)maxHp ) * (float)image.getWidth()), 100);
+		
+		return image;
+	}
+	
 }
