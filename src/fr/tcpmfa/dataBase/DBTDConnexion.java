@@ -18,7 +18,7 @@ public class DBTDConnexion {
 	private static String root = "root";
 	private static String password = "";
 	private java.sql.Connection connection;
-	private java.sql.Statement statement;
+	private static java.sql.Statement statement;
 
 	public DBTDConnexion(){
 		this.connection=null;
@@ -76,7 +76,7 @@ public class DBTDConnexion {
 	 * @param game
 	 * @return
 	 */
-	public Map getMap(int ID_Map, Game game){
+	public static Map getMap(int ID_Map, Game game){
 		ResultSet info = null;
 		Coordinate startPoint = null;
 		Coordinate endPoint = null;
@@ -242,6 +242,7 @@ public class DBTDConnexion {
 		int score = 0;
 		int N_Map= 0;
 		int saveNumber;
+		Map map = null;
 		
 		try {
 			info= statement.executeQuery("SELECT * FROM `save` WHERE SaveNumber="+nbSave);
@@ -252,7 +253,9 @@ public class DBTDConnexion {
 			wave=info.getInt(5);
 			N_Map=info.getInt(6);
 			
+			map=DBTDConnexion.getMap(N_Map,null);
 			info=statement.executeQuery("SELECT * FROM Towersave WHERE SaveNumber="+nbSave);
+			
 			
 			
 		} catch (SQLException e) {
@@ -261,7 +264,7 @@ public class DBTDConnexion {
 		}
 		
 		
-		return new Game(hp,ressource,wave);
+		return new Game(hp,ressource,wave,map);
 	}
 	/**
 	 * Permet de récuperer les données des tours contenu
@@ -302,6 +305,7 @@ public class DBTDConnexion {
 		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown,id_Tower);
 	}
 	
+	
 	public Tower getTower(int level, Type type, Game game){
 		ResultSet info = null;
 		
@@ -329,5 +333,5 @@ public class DBTDConnexion {
 				null ,game, level,range,cost,cooldown, id_Tower);
 	}
 
-}
+	}
 
