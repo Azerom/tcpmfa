@@ -26,8 +26,6 @@ import fr.tcpmfa.util.Time;
 public class Launcher extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	
-	Time chronoLauncher = new Time();
 
 	  public Launcher(JFrame parent, String title, boolean modal){
 
@@ -173,21 +171,6 @@ public class Launcher extends JDialog {
 		  this.getContentPane().add(panNLG, BorderLayout.SOUTH);
 		  //
 	  }
-	  
-	 public void runTimeStart(){
-		 chronoLauncher.setStartTime();
-		 System.out.println(chronoLauncher.startTime);
-	 }
-	 
-	 public void runTimeEnd(){
-		 chronoLauncher.setEndTime();
-		 System.out.println(chronoLauncher.endTime);
-	 }
-	 
-	 public void runTimeDisplay(){
-		 String chrono = chronoLauncher.getChrono();
-		 System.out.println(chrono);
-	 }
 
 }
 
