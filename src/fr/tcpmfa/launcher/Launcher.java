@@ -109,16 +109,16 @@ public class Launcher extends JDialog {
 		  	JPanel panSetHP = new JPanel();
 		  	panSetHP.setPreferredSize(new Dimension(200, 60));
 		  	panSetHP.setBorder(BorderFactory.createTitledBorder("Nombre de points de vie :"));
-		  	JComboBox<String> HP = new JComboBox<String>();
-		  	HP.addItem("10");
-		  	HP.addItem("15");
-		  	HP.addItem("20");
-		  	HP.addItem("25");
-		  	HP.addItem("30");
-		  	HP.addItem("35");
-		  	HP.addItem("40");
-		  	HP.addItem("45");
-		  	HP.addItem("50");
+		  	JComboBox<Integer> HP = new JComboBox<Integer>();
+		  	HP.addItem(10);
+		  	HP.addItem(15);
+		  	HP.addItem(20);
+		  	HP.addItem(25);
+		  	HP.addItem(30);
+		  	HP.addItem(35);
+		  	HP.addItem(40);
+		  	HP.addItem(45);
+		  	HP.addItem(50);
 		  	JLabel HPLabel = new JLabel("Points de vie : ");
 		  	
 		  	panSetHP.add(HPLabel);
@@ -129,16 +129,16 @@ public class Launcher extends JDialog {
 		  	JPanel panSetRessources = new JPanel();
 		  	panSetRessources.setPreferredSize(new Dimension(200, 60));
 		  	panSetRessources.setBorder(BorderFactory.createTitledBorder("Nombre de points de ressources :"));
-		  	JComboBox<String> Ressources = new JComboBox<String>();
-		  	Ressources.addItem("10");
-		  	Ressources.addItem("15");
-		  	Ressources.addItem("20");
-		  	Ressources.addItem("25");
-		  	Ressources.addItem("30");
-		  	Ressources.addItem("35");
-		  	Ressources.addItem("40");
-		  	Ressources.addItem("45");
-		  	Ressources.addItem("50");
+		  	JComboBox<Integer> Ressources = new JComboBox<Integer>();
+		  	Ressources.addItem(10);
+		  	Ressources.addItem(15);
+		  	Ressources.addItem(20);
+		  	Ressources.addItem(25);
+		  	Ressources.addItem(30);
+		  	Ressources.addItem(35);
+		  	Ressources.addItem(40);
+		  	Ressources.addItem(45);
+		  	Ressources.addItem(50);
 		  	JLabel ressourcesLabel = new JLabel("Ressources : ");
 		  	
 		  	panSetRessources.add(ressourcesLabel);
@@ -149,10 +149,10 @@ public class Launcher extends JDialog {
 		  	JPanel panSetMap = new JPanel();
 		  	panSetMap.setPreferredSize(new Dimension(200, 60));
 		  	panSetMap.setBorder(BorderFactory.createTitledBorder("Choix de la Map"));
-		  	JComboBox<String> id_Map = new JComboBox<String>();
-		  	id_Map.addItem("1");
-		  	id_Map.addItem("2");
-		  	id_Map.addItem("3");
+		  	JComboBox<Integer> id_Map = new JComboBox<Integer>();
+		  	id_Map.addItem(1);
+		  	id_Map.addItem(2);
+		  	id_Map.addItem(3);
 		  	JLabel mapLabel = new JLabel("Map : ");
 		  	
 		  	panSetMap.add(mapLabel);
@@ -171,7 +171,8 @@ public class Launcher extends JDialog {
 			  public void actionPerformed(ActionEvent arg0) {
 				  
 				  System.out.println("Pseudo : "+pseudo.getText()+"\nNombre de Points de vie : "+HP.getSelectedItem()+"\nRessources : "+Ressources.getSelectedItem()+"\nN°Map :"+id_Map.getSelectedItem());
-				  Main.launch(pseudo, HP, Ressources, id_Map);
+				  Main.launch(pseudo.getText(), (int)HP.getSelectedItem(), (int)Ressources.getSelectedItem(), (int)id_Map.getSelectedItem());
+				  setVisible(false);
 			  }
 		  });
 		  

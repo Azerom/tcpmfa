@@ -13,20 +13,20 @@ public class Main {
 		System.out.println("Hello world !");
 		
 		new Launcher(null, "Launcher", true);
-		//Test code : remove ASAP !
-		//------------------------
-		Game game = new Game(15, 15, 15);
+
+	}
+	
+	public static void launch(String pseudo, int HP, int ressources ,int id_Map){
+		System.out.println("======== ENTREE LAUNCH ==========");
+		System.out.println("Pseudo : "+pseudo+"\nNombre de Points de vie : "+HP+"\nRessources :"+ressources+"\nN°Map : "+id_Map);
+
+		Game game = new Game(HP, ressources, id_Map);
 
 		for(int i = 0; i < 100; i++){
 			game.turn();
 			
 		}
-	}
-	
-	public static void launch(JTextField pseudo, JComboBox<String> HP, JComboBox<String> Ressources ,JComboBox<String> id_Map){
-		System.out.println("======== ENTREE LAUNCH ==========");
-		System.out.println("Pseudo : "+pseudo+"\nNombre de Points de vie : "+HP+"\nRessources :"+Ressources+"\nN°Map : "+id_Map);
-
+		
 	}
 	
 	public static void launch(int idSave){
