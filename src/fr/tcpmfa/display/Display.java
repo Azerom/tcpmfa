@@ -24,13 +24,13 @@ public class Display extends JFrame {
 	
 	public Display(String titre, ArrayList<GraphicalElement> elements){
 		super(titre);
-		this.setSize(600, 600);
+		this.setSize(900, 900);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.panel = new MapPanel();
-		this.panel.setSize(new Dimension(400, 600));
+		this.panel.setSize(new Dimension(700, 900));
 		JPanel p2 = new JPanel();
-		p2.setSize(200, 600);
+		p2.setSize(200, 900);
 		
 		this.add(this.panel);
 		this.add(p2);
@@ -48,7 +48,7 @@ public class Display extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+				System.out.println(arg0);
 			}
 			
 			@Override
@@ -108,9 +108,9 @@ public class Display extends JFrame {
 	}
 	
 	public void drawGraphicalElement(final GraphicalElement gElement, final Graphics g) {
-		int xP = calcX(gElement.getCoord().getX()) - 15;
-		int yP = calcY(gElement.getCoord().getY()) - 15;
-		g.drawImage(gElement.getImage(), xP, yP, 30, 30,  null);
+		int xP = calcX(gElement.getCoord().getX()) - gElement.getImage().getWidth()/2;
+		int yP = calcY(gElement.getCoord().getY()) - gElement.getImage().getHeight()/2;
+		g.drawImage(gElement.getImage(), xP, yP, null);
 		
 //		g.setColor(Color.red);
 //		g.fillRect(xP, yP - 10, 30, 5);

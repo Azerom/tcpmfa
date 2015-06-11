@@ -1,13 +1,12 @@
 package fr.tcpmfa.engine;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
 
 import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.util.Coordinate;
@@ -142,19 +141,24 @@ public class Ennemy extends Element {
 	@Override
 	public BufferedImage getImage(){
 		
-		Graphics g = this.image.getGraphics();
-		try {
-			g.drawImage(ImageIO.read(new File("Images/FortiGuard.png")), 0, 0, 100, 100,  null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		BufferedImage image = new BufferedImage(30,30,BufferedImage.TYPE_INT_ARGB);
+		Graphics g = image.getGraphics();
+		if( g instanceof Graphics2D ){
+			Graphics2D g2d = (Graphics2D) g;
+			// make sure the background is filled with transparent pixels when cleared !
+			Composite original = g2d.getComposite();
+			g2d.setBackground(new Color(0,0,0,0));
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_IN, 0.0f));
+			g.clearRect(0, 0, 30, 30);
+			g2d.setComposite(original);
+			}
+		g.drawImage(this.image, 0, 0, 30, 30, null);
+		
 		g.setColor(Color.red);
-		g.fillRect(0, 0, image.getWidth(), 100 );
+		g.fillRect(0, 0, image.getWidth(), 5 );
 		
 		g.setColor(Color.green);
-		g.fillRect(0, 0, Math.round( ( (float)hp / (float)maxHp ) * (float)image.getWidth()), 100);
+		g.fillRect(0, 0, Math.round( ( (float)hp / (float)maxHp ) * (float)image.getWidth()), 5);
 		
 		return image;
 	}
