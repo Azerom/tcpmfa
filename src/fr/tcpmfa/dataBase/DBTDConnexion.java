@@ -110,7 +110,7 @@ public class DBTDConnexion {
 					case 1 :
 						direction = Direction.EAST;
 						break;
-					case 2 :
+					case 2:
 						direction = Direction.SOUTH;
 						break;
 					case 3 :
@@ -128,7 +128,7 @@ public class DBTDConnexion {
 			info = statement.executeQuery("SELECT * FROM TowerEmplacement WHERE N_Map="+ID_Map);
 			tower = new ArrayList<Tower> ();
 			while(info.next()){
-				Tower emplacement= new Tower(0,null,null, new Coordinate(info.getInt(2),info.getInt(3)),null,0,0,0,0);
+				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,80,0,10);
 				tower.add(emplacement);
 			}
 			

@@ -40,13 +40,13 @@ public class Coordinate {
 	public void moveInDirection(Direction direction){
 		switch(direction){
 		 	case NORTH :
-		 		y += 1;
+		 		y -= 1;
 		 		break;
 		 	case EAST :
 		 		x += 1;
 		 		break;
 		 	case SOUTH :
-		 		y -= 1;
+		 		y += 1;
 		 		break;
 		 	case WEST :
 		 		x -= 1;

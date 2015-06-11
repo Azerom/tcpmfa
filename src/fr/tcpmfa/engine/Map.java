@@ -53,8 +53,9 @@ public class Map {
 
 		
 		//Test code remove ASAP
-		this.towers = new ArrayList<Tower>();
-		this.towers.add(new Tower(1, null, "Tour", new Coordinate(80, 80), game,0,80,0,0));
+//		this.towers = new ArrayList<Tower>();
+//		this.towers.add(new Tower(5, null, "Tour", new Coordinate(120, 80), game,0,80,0,5));
+		this.towers = towers;
 	}
 	
 	public Coordinate getCoordStart() {
