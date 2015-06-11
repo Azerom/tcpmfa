@@ -170,7 +170,7 @@ public class DBTDConnexion {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new Ennemy(moveSpeed, null, loot, HP, null, numberDamage, null, null, null, null);
+		return new Ennemy(ID_Ennemy, moveSpeed, null, loot, HP, null, numberDamage, null, null, null, null);
 
 	}
 	/**

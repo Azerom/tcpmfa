@@ -53,7 +53,7 @@ public class Ennemy extends Element {
 	 * @param coord
 	 * @param game
 	 */
-	public Ennemy(int moveSpeed, Type resistance, int loot, int hp, CheckPoint checkpoint, int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game){
+	public Ennemy(int id, int moveSpeed, Type resistance, int loot, int hp, CheckPoint checkpoint, int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game){
 		super(coord, nmdDamage, typeDamage, name, game);
 		this.moveSpeed = moveSpeed;
 		this.resitance = resistance;
@@ -61,7 +61,7 @@ public class Ennemy extends Element {
 		this.hp = hp;
 		this.maxHp = hp;
 		this.checkPoint = checkpoint;
-		this.setImage("Images/bluescreen.png");
+		this.setImage("e" + Integer.toString(id) + ".png");
 		
 		System.out.println("hello, i am " + this.name);
 	}

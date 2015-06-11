@@ -99,7 +99,7 @@ public class Game {
 		}
 		this.dead.clear();
 		try {
-			Thread.sleep(1);
+			Thread.sleep(3);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

@@ -70,7 +70,7 @@ public abstract class Element implements GraphicalElement{
 	}
 	public void setImage(String image){
 	       try {                
-		          this.image =  ImageIO.read(new File(image));
+		          this.image =  ImageIO.read(new File("Images/" + image));
 		        } catch (IOException ex) {
 		             // handle exception...
 		        }

@@ -11,9 +11,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import fr.tcpmfa.engine.Tower;
 import fr.tcpmfa.util.Coordinate;
 
 public class Display extends JFrame {
@@ -37,6 +39,7 @@ public class Display extends JFrame {
 		
 		this.add(this.panel);
 		this.add(p2);
+		
 		this.setBackground(Color.black);
 		this.elements = elements;
 		this.setVisible(true);
@@ -69,7 +72,7 @@ public class Display extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Coordinate coord = new Coordinate(arg0.getX(), arg0.getY());
-				System.out.println(arg0);
+				
 				for(GraphicalElement e : elements){
 
 					int tX = e.getCoord().getX();
@@ -84,11 +87,12 @@ public class Display extends JFrame {
 					if((dX <= 30) && 
 							(dY <= 30)){
 						
-							e.setImage("Images/FortiGuard.png");
+							if(e instanceof Tower){
+								((Tower) e).levelUp();
+							}
 
 						
 					}
-					break;
 				}
 			}
 		});
@@ -98,6 +102,10 @@ public class Display extends JFrame {
 		this.drawAllGraphicalElement();
 		this.panel.setImage(image);
 		this.panel.repaint();
+	}
+	
+	public JFrame getThis(){
+		return this;
 	}
 	
 	/**
