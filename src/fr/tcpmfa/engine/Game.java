@@ -59,8 +59,6 @@ public class Game {
 		actualWave = new WaveEnnemy(this, map.getStartPoint());
 		//		Ennemy ennemy = new Ennemy(0, null, 15, 20, new CheckPoint(Direction.NORTH, map.), 5, null, "Test Guy", new Coordinate(0,0), this);
 		//		actualWave.add(ennemy);
-		
-
 	}
 
 	public void deadTakeAct(Ennemy dead){

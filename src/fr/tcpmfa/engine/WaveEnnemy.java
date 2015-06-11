@@ -35,7 +35,7 @@ public class WaveEnnemy extends ArrayList<Ennemy> {
 
 	}
 
-	public int getCount(){
+	public static int getCount(){
 		return count;
 	}
 

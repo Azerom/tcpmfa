@@ -173,6 +173,7 @@ public class Launcher extends JDialog {
 				  System.out.println("Pseudo : "+pseudo.getText()+"\nNombre de Points de vie : "+HP.getSelectedItem()+"\nRessources : "+Ressources.getSelectedItem()+"\nN°Map :"+id_Map.getSelectedItem());
 				  Main.launch(pseudo.getText(), (int)HP.getSelectedItem(), (int)Ressources.getSelectedItem(), (int)id_Map.getSelectedItem());
 				  setVisible(false);
+				  dispose();
 			  }
 		  });
 		  

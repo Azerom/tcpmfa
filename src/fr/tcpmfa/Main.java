@@ -1,10 +1,8 @@
 package fr.tcpmfa;
 
 
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-
 import fr.tcpmfa.engine.Game;
+import fr.tcpmfa.engine.WaveEnnemy;
 import fr.tcpmfa.launcher.Launcher;
 
 public class Main {
@@ -13,6 +11,7 @@ public class Main {
 		System.out.println("Hello world !");
 		
 		new Launcher(null, "Launcher", true);
+		
 
 	}
 	
@@ -20,18 +19,25 @@ public class Main {
 		System.out.println("======== ENTREE LAUNCH ==========");
 		System.out.println("Pseudo : "+pseudo+"\nNombre de Points de vie : "+HP+"\nRessources :"+ressources+"\nN°Map : "+id_Map);
 
-		Game game = new Game(HP, ressources, id_Map);
+		new Thread(){
+			public void run(){
+				Game game = new Game(HP, ressources, id_Map);
+
+				System.out.println("Test");
+				while(true){
+					game.turn();
+					
+				}
+			}
+		}.start();
 
 
 	}
 	
 	public static void launch(){
-		Game game = new Game(15, 20, 1);
+		
+		launch("inconnu", 15, 15, 1);
 
-		for(int i = 0; i < 100; i++){
-			game.turn();
-			
-		}
 	}
 	
 	public static void launch(int idSave){
