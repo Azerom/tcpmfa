@@ -134,6 +134,7 @@ public class Ennemy extends Element {
 		this.hp -= damage;
 		System.out.println(this.name + " take " + damage + " damage, remaing " + this.hp + " hp");
 		if(hp <= 0){
+			game.setRessource(game.getRessource() + this.loot);
 			this.die();
 		}
 	}

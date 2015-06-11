@@ -12,7 +12,7 @@ import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.util.Coordinate;
 
 public class Tower extends Element {
-	private final int cost;
+	private int cost;
 	private final Type damageType;
 	private int level;
 	private int range;
@@ -26,7 +26,7 @@ public class Tower extends Element {
 		this.cost = cost;
 		this.range=range;
 		this.damageType = null;
-		this.setImage("Tour_3.png");
+		this.setImage("tnull.png");
 		this.level=level;
 		this.cooldown=cooldown;
 		this.countDown = cooldown;
@@ -52,6 +52,9 @@ public class Tower extends Element {
 
 	public int getCost() {
 		return cost;
+	}
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
 
 	public Type getDamageType() {
@@ -130,17 +133,23 @@ public class Tower extends Element {
 	
 	public void setType(Type type){
 		this.typeDamage = type;
-	}
+		this.setImage("t" + type + ".png");
+		}
 	
 	public void levelUp(){
-		level++;
-		DBTDConnexion bdd = new DBTDConnexion();
-		bdd.open();
-		Tower temp = bdd.getTower(level, typeDamage, game);
-		this.setCooldown(temp.getCooldown());
-		this.setRange(temp.getRange());
-		this.setName(temp.getName());
-		this.setNmbDamage(temp.getNmbDamage());
+		if(game.getRessource() >= this.cost){
+			game.setRessource(game.getRessource() - this.cost);
+			level++;
+			DBTDConnexion bdd = new DBTDConnexion();
+			bdd.open();
+			Tower temp = bdd.getTower(level, typeDamage, game);
+			this.setCooldown(temp.getCooldown());
+			this.setRange(temp.getRange());
+			this.setName(temp.getName());
+			this.setNmbDamage(temp.getNmbDamage());
+			this.setCost(temp.getCost());
+		}
+
 	}
 	
 	@Override
@@ -204,16 +213,16 @@ public class Tower extends Element {
 	public void reactToAction(String action){
 		switch(action){
 			case "Light" :
-				this.typeDamage = Type.Light;
+				this.setType(Type.Light);
 				break;
 			case "Nightmare" :
-				this.typeDamage = Type.Nightmare;
+				this.setType(Type.Nightmare);
 				break;
 			case "Frost" :
-				this.typeDamage = Type.Frost;
+				this.setType(Type.Frost);
 				break;
 			case "Fire" :
-				this.typeDamage = Type.Fire;
+				this.setType(Type.Fire);
 				break;
 			case "upgrade" :
 				this.levelUp();
