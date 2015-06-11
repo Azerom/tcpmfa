@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -74,5 +75,11 @@ public abstract class Element implements GraphicalElement{
 		        } catch (IOException ex) {
 		             // handle exception...
 		        }
+	}
+	public ArrayList<String> getPossibleAction(){
+		return null;
+	}
+	public void reactToAction(String action){
+		
 	}
 }
