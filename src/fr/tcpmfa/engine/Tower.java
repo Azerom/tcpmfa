@@ -6,7 +6,9 @@ import java.awt.Composite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
+import fr.tcpmfa.dataBase.DBTDConnexion;
 import fr.tcpmfa.util.Coordinate;
 
 public class Tower extends Element {
@@ -30,6 +32,46 @@ public class Tower extends Element {
 		this.countDown = cooldown;
 		this.focus = null;
 		this.id_Tower=id_Tower;
+	}
+	
+	public int getRange() {
+		return range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
+	}
+
+	public int getCooldown() {
+		return cooldown;
+	}
+
+	public void setCooldown(int cooldown) {
+		this.cooldown = cooldown;
+	}
+
+	public int getCountDown() {
+		return countDown;
+	}
+
+	public void setCountDown(int countDown) {
+		this.countDown = countDown;
+	}
+
+	public int getCost() {
+		return cost;
+	}
+
+	public Type getDamageType() {
+		return damageType;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public static void setId_Tower(int id_Tower) {
+		Tower.id_Tower = id_Tower;
 	}
 
 	@Override
@@ -100,14 +142,17 @@ public class Tower extends Element {
 	
 	public void levelUp(){
 		level++;
+		DBTDConnexion bdd = new DBTDConnexion();
+		bdd.open();
+		Tower temp = bdd.getTower(level, typeDamage, game);
+		this.setCooldown(temp.getCooldown());
+		this.setRange(temp.getRange());
+		this.setName(temp.getName());
+		this.setNmbDamage(temp.getNmbDamage());
 	}
 	
 	@Override
 	public BufferedImage getImage(){
-		
-		
-
-		
 		
 		BufferedImage image = new BufferedImage(range, range,BufferedImage.TYPE_INT_ARGB);
 		Graphics g = image.getGraphics();
@@ -143,5 +188,36 @@ public class Tower extends Element {
 		}
 
 		return image;
+	}
+	
+	@Override
+	public ArrayList<String> getPossibleAction(){
+		ArrayList<String> list = new ArrayList<String>();
+		if(this.typeDamage == null){
+			list.add("nightmare");
+			list.add("light");
+			return list;
+		}
+		else{
+			
+			list.add("upgrade");
+			return list;
+		}
+
+	}
+	
+	@Override
+	public void reactToAction(String action){
+		switch(action){
+			case "light" :
+				this.typeDamage = Type.Light;
+				break;
+			case "nightmare" :
+				this.typeDamage = Type.Nightmare;
+				break;
+			case "upgrade" :
+				this.levelUp();
+				break;
+		}
 	}
 }

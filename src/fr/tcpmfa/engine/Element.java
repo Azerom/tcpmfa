@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -21,6 +22,10 @@ public abstract class Element implements GraphicalElement{
 	protected int wait;
 	protected BufferedImage image;
 	
+	public void setNmbDamage(int nmbDamage) {
+		this.nmbDamage = nmbDamage;
+	}
+
 	public Element(Coordinate coord, int nmdDamage, Type typeDamage, String name, Game game){
 		this.coord = coord;
 		this.nmbDamage = nmdDamage;
@@ -74,5 +79,11 @@ public abstract class Element implements GraphicalElement{
 		        } catch (IOException ex) {
 		             // handle exception...
 		        }
+	}
+	public ArrayList<String> getPossibleAction(){
+		return null;
+	}
+	public void reactToAction(String action){
+		
 	}
 }

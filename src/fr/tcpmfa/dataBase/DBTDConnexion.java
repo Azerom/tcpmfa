@@ -14,8 +14,8 @@ import fr.tcpmfa.util.Direction;
 
 
 public class DBTDConnexion {
-	private static String url="jdbc:mysql://10.162.129.54/projet_java";
-	private static String root = "User";
+	private static String url="jdbc:mysql://localhost/projet_java";
+	private static String root = "root";
 	private static String password = "";
 	private java.sql.Connection connection;
 	private java.sql.Statement statement;
@@ -141,7 +141,7 @@ public class DBTDConnexion {
 			info = statement.executeQuery("SELECT * FROM TowerEmplacement WHERE N_Map="+ID_Map);
 			tower = new ArrayList<Tower> ();
 			while(info.next()){
-				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,80,0,10,0);
+				Tower emplacement= new Tower(10,null,null, new Coordinate(info.getInt(2),info.getInt(3)),game,0,30,0,10,0);
 				tower.add(emplacement);
 			}
 			
@@ -300,6 +300,33 @@ public class DBTDConnexion {
 			e.printStackTrace();
 		}
 		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown,id_Tower);
+	}
+	
+	public Tower getTower(int level, Type type, Game game){
+		ResultSet info = null;
+		
+		int numberDamage = 0;
+		int cooldown=0;
+		int range = 0;
+		int cost = 0;
+		int id_Tower = 0;
+
+		try {
+			info = statement.executeQuery("SELECT * FROM Tower WHERE Level="+level + " AND DamageType = \""
+					+ type.toString() + "\"");
+			info.first();
+			id_Tower=info.getInt(1);
+			numberDamage=info.getInt(5);
+			cooldown=info.getInt(6);
+			range=info.getInt(7);
+			cost=info.getInt(8);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new Tower(numberDamage, type, type.toString() + Integer.toString(level), 
+				null ,game, level,range,cost,cooldown, id_Tower);
 	}
 
 }

@@ -1,10 +1,11 @@
 package fr.tcpmfa.engine;
 
-import java.sql.Time;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import fr.tcpmfa.util.Coordinate;
+import fr.tcpmfa.util.Time;
 
 public class WaveEnnemy extends ArrayList<Ennemy> {
 
@@ -17,9 +18,13 @@ public class WaveEnnemy extends ArrayList<Ennemy> {
 	private ArrayList<Ennemy> reserve;
 
 	private int countDown;
+	
+	private Time time;
 
 	public WaveEnnemy(Game game, Point startPoint){
 		count++;
+		this.time = new Time();
+		time.setStartTime();
 		this.reserve = new ArrayList<Ennemy>();
 		for(int i = 0; i < NBRENNEMY ; i++){
 

@@ -1,5 +1,6 @@
 package fr.tcpmfa.display;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,6 +28,7 @@ public class Display extends JFrame {
 	private MapPanel panel;
 	
 	private ArrayList<GraphicalElement> elements;
+	private TPanel interfacePanel;
 	
 	public Display(String titre, ArrayList<GraphicalElement> elements){
 		super(titre);
@@ -34,11 +37,13 @@ public class Display extends JFrame {
 		this.setResizable(false);
 		this.panel = new MapPanel();
 		this.panel.setSize(new Dimension(800, 600));
-		JPanel p2 = new JPanel();
-		p2.setSize(200, 600);
-		
-		this.add(this.panel);
-		this.add(p2);
+		interfacePanel = new TPanel();
+		interfacePanel.setSize(200, 600);
+		interfacePanel.setPreferredSize(new Dimension(200, 600));
+		interfacePanel.add(new JButton("Test"));
+
+		this.add(this.panel, BorderLayout.CENTER);
+		this.add(interfacePanel, BorderLayout.WEST);
 		
 		this.setBackground(Color.black);
 		this.elements = elements;
@@ -78,7 +83,7 @@ public class Display extends JFrame {
 					int tX = e.getCoord().getX();
 					int tY = e.getCoord().getY();
 					
-					int eX = arg0.getX();
+					int eX = arg0.getX()-200;
 					int eY = arg0.getY();
 					
 					int dX = Math.abs(eX - tX);
@@ -87,9 +92,10 @@ public class Display extends JFrame {
 					if((dX <= 30) && 
 							(dY <= 30)){
 						
-							if(e instanceof Tower){
-								((Tower) e).levelUp();
-							}
+
+								
+								interfacePanel.setGElement(e);
+							
 
 						
 					}
