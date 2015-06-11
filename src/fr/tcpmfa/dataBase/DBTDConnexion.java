@@ -20,7 +20,7 @@ import fr.tcpmfa.util.Direction;
 
 public class DBTDConnexion {
 	private static String url="jdbc:mysql://10.162.129.54/projet_java";
-	private static String root = "root";
+	private static String root = "User";
 	private static String password = "";
 	private java.sql.Connection connection;
 	private java.sql.Statement statement;
