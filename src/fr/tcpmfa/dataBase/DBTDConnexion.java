@@ -110,7 +110,7 @@ public class DBTDConnexion {
 					case 1 :
 						direction = Direction.EAST;
 						break;
-					case 2 :
+					case 2:
 						direction = Direction.SOUTH;
 						break;
 					case 3 :
