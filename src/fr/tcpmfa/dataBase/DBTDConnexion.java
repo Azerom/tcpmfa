@@ -5,13 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import fr.tcpmfa.engine.Map;
-import fr.tcpmfa.engine.CheckPoint;
-import fr.tcpmfa.engine.Ennemy;
-import fr.tcpmfa.engine.Game;
-import fr.tcpmfa.engine.Point;
-import fr.tcpmfa.engine.Tower;
-import fr.tcpmfa.engine.WaveEnnemy;
+import fr.tcpmfa.engine.*;
 import fr.tcpmfa.util.Coordinate;
 import fr.tcpmfa.util.Direction;
 
@@ -134,7 +128,7 @@ public class DBTDConnexion {
 			info = statement.executeQuery("SELECT * FROM TowerEmplacement WHERE N_Map="+ID_Map);
 			tower = new ArrayList<Tower> ();
 			while(info.next()){
-				Tower emplacement= new Tower(0,null,null, new Coordinate(info.getInt(2),info.getInt(3)),null,0);
+				Tower emplacement= new Tower(0,null,null, new Coordinate(info.getInt(2),info.getInt(3)),null,0,0,0,0);
 				tower.add(emplacement);
 			}
 			
@@ -183,7 +177,7 @@ public class DBTDConnexion {
 	 * méthode servant a sauvegarder
 	 */
 	public void save(Game game){
-		ResultSet info = null;
+		ResultSet info =null ;
 		int hp=0;
 		int ressource = 0;
 		int wave = 0;
@@ -202,19 +196,7 @@ public class DBTDConnexion {
 		
 		try {
 			info = statement.executeQuery("INSERT INTO `save`(`SaveNumber`, `Ressources`, `TimeSpend`, `BaseHp`, `Wave`, `N_Map`) "
-						+ "VALUES ('"
-						+ saveNumber
-						+"','"
-						+ ressource
-						+ "','"
-						+ score
-						+"','"
-						+hp
-						+"','"
-						+wave
-						+"','"
-						+N_Map
-						+"')");
+						+ "VALUES ('"+ saveNumber+"','"+ ressource+ "','"+ score+"','"+hp+"','"+wave+"','"+N_Map+"')");
 			
 			
 		} catch (SQLException e) {
@@ -227,6 +209,38 @@ public class DBTDConnexion {
 	public void getSave( ){
 		
 		
+	}
+	
+	public Tower getTower(int ID_Tower,Game game){
+		
+		ResultSet info = null;
+		int id_Tower=0;
+		int level = 0;
+		String DommageType;
+		int HP = 0;
+		int numberDamage = 0;
+		int cooldown=0;
+		int range=0;
+		int cost = 0;
+		
+
+		try {
+			info = statement.executeQuery("SELECT * FROM Tower WHERE IdTower="+ID_Tower);
+			info.first();
+			id_Tower=info.getInt(1);
+			level =info.getInt(2);
+			DommageType=info.getString(3);
+			HP = info.getInt(4);
+			numberDamage=info.getInt(5);
+			cooldown=info.getInt(6);
+			range=info.getInt(7);
+			cost=info.getInt(8);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new Tower(numberDamage, null,"", null ,game, level,range,cost,cooldown);
 	}
 
 }

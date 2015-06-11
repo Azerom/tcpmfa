@@ -6,14 +6,17 @@ public class Tower extends Element {
 	private final int cost;
 	private final Type damageType;
 	private int level;
-	private int range = 50;
+	private int range;
+	private int cooldown;
 	
-	public Tower(int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game,int level){
+	public Tower(int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game,int level,int range,int cost,int cooldown){
 		super(coord, nmdDamage, typeDamage, name, game);
-		this.cost = 0;
+		this.cost = cost;
+		this.range=range;
 		this.damageType = null;
 		this.setImage("Images/Tour_3.png");
 		this.level=level;
+		this.cooldown=cooldown;
 	}
 
 	@Override
