@@ -159,4 +159,11 @@ public class Ennemy extends Element {
 		return image;
 	}
 	
+	public boolean isAlive(){
+		if(hp > 0)
+			return true;
+		else
+			return false;
+	}
+	
 }

@@ -8,7 +8,8 @@ public class Tower extends Element {
 	private int level;
 	private int range;
 	private int cooldown;
-	
+	private Ennemy focus;
+
 	public Tower(int nmdDamage, Type typeDamage, String name, Coordinate coord, Game game,int level,int range,int cost,int cooldown){
 		super(coord, nmdDamage, typeDamage, name, game);
 		this.cost = cost;
@@ -17,33 +18,52 @@ public class Tower extends Element {
 		this.setImage("Images/Tour_3.png");
 		this.level=level;
 		this.cooldown=cooldown;
+		this.focus = null;
 	}
 
 	@Override
 	public void act() {
-		for(Ennemy e : game.getActualWave()){
 
-			int eX = e.getCoord().getX();
-			int eY = e.getCoord().getY();
-			
-			int tX = this.coord.getX();
-			int tY = this.coord.getY();
-			
-			int dX = Math.abs(eX - tX);
-			int dY = Math.abs(eY - tY);
 
-			if((dX <= this.range) && 
-					(dY <= this.range)){
-				
-				if( ( (dX * dX) + (dY * dY) ) <= (range * range) ){
-					this.attack(e);
+		if(focus != null){
+			if(isAtRange(focus) && focus.isAlive()){
+				attack(focus);
+			}
+			else
+				focus = null;
+		}
+		else{
+			for(Ennemy e : game.getActualWave()){
+				if(isAtRange(e)){
+					focus = e;
 				}
-				
 			}
 		}
-		
+
 	}
-	
+
+	private boolean isAtRange(Ennemy e){
+		int eX = e.getCoord().getX();
+		int eY = e.getCoord().getY();
+
+		int tX = this.coord.getX();
+		int tY = this.coord.getY();
+
+		int dX = Math.abs(eX - tX);
+		int dY = Math.abs(eY - tY);
+
+		if((dX <= this.range) && 
+				(dY <= this.range)){
+
+			if( ( (dX * dX) + (dY * dY) ) <= (range * range) ){
+				return true;
+			}
+
+		}
+
+		return false;
+	}
+
 	public int getlevel(){
 		return level;
 	}
